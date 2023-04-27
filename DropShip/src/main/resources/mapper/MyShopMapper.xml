@@ -58,15 +58,15 @@
 
 	 <!-- 회원 마이페이지주문조회 (날짜 검색도) , (작품id, 리뷰별점) -->
 	 <select id="selectOrderDetailByMemberId" resultType="com.java.vo.Order_Detail_inquireVo">	
-	    SELECT om.order_date, od.order_member_id, w.work_img_url, w.work_name, a.artist_korean_name, 
-	    	   wo.option_quantity, wo.option_selected_price, om.order_status, w.id as work_id, r.review_rate
+	    SELECT om.order_date, MAX(od.order_member_id) as order_member_id, w.work_img_url, w.work_name, a.artist_korean_name, 
+			   wo.option_quantity, wo.option_selected_price, om.order_status, w.id as work_id
 			FROM order_detail od
 			JOIN order_member om ON od.order_member_id = om.id
 			JOIN work w ON od.work_id = w.id
 			JOIN artist a ON w.artist_id = a.id
 			JOIN work_option wo ON od.option_id = wo.id
 			JOIN member m ON om.member_id = m.id
-			LEFT JOIN work_review r ON od.work_id = r.work_id
+			LEFT JOIN work_review r ON od.order_member_id = r.order_member_id  
 		WHERE om.member_id = #{member_id}
 	 	<if test="(fr_date != null and fr_date != '') and (to_date != null and to_date != '')">	<!-- 검색 시작일 종료일 둘 다 있으면 -->
 			<![CDATA[
@@ -83,8 +83,43 @@
 	 	<if test="fr_date == '' and to_date != ''">	<!-- 시작일이 없고 & 종료일 있으면 -->
 			AND om.order_date <![CDATA[<=]]> TO_DATE(#{to_date})+1	<!-- 종료일 이전까지 -->
 	 	</if>
+		GROUP BY om.order_date, w.work_img_url, w.work_name, a.artist_korean_name, 
+	     		wo.option_quantity, wo.option_selected_price, om.order_status, w.id
 		ORDER BY om.order_date DESC
 	 </select>
+<!-- 	 <select id="selectOrderDetailByMemberId" resultType="com.java.vo.Order_Detail_inquireVo">	 -->
+<!-- 	    SELECT om.order_date, od.order_member_id, w.work_img_url, w.work_name, a.artist_korean_name,  -->
+<!-- 	    	   wo.option_quantity, wo.option_selected_price, om.order_status, w.id as work_id, r.review_rate -->
+<!-- 			FROM order_detail od -->
+<!-- 			JOIN order_member om ON od.order_member_id = om.id -->
+<!-- 			JOIN work w ON od.work_id = w.id -->
+<!-- 			JOIN artist a ON w.artist_id = a.id -->
+<!-- 			JOIN work_option wo ON od.option_id = wo.id -->
+<!-- 			JOIN member m ON om.member_id = m.id -->
+<!-- 			LEFT JOIN work_review r ON od.order_member_id = r.order_member_id -->
+<!-- 		WHERE om.member_id = #{member_id} -->
+<!-- 	 	<if test="(fr_date != null and fr_date != '') and (to_date != null and to_date != '')">	검색 시작일 종료일 둘 다 있으면 -->
+<!-- 			<![CDATA[ -->
+<!-- 			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= TO_DATE(#{to_date})+1 -->
+<!-- 			]]> -->
+<!-- 	 	</if> -->
+<!-- 	 	<if test="(fr_date != '' and fr_date != null) and (to_date == '' or to_date == null)">	시작일 있고 & 종료일이 없으면종료일을 오늘로 함 -->
+<!-- 			<![CDATA[									 -->
+<!-- 			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= sysdate	 -->
+<!-- 			]]> -->
+<!-- 	 	</if> -->
+<!-- 	 	<if test="(fr_date == '' or fr_date != null) and (to_date == '' or to_date == null)">	시작일 & 종료일 둘 다 없으면전체. 그냥 넘어가 -->
+<!-- 	 	</if> -->
+<!-- 	 	<if test="fr_date == '' and to_date != ''">	시작일이 없고 & 종료일 있으면 -->
+<!-- 			AND om.order_date <![CDATA[<=]]> TO_DATE(#{to_date})+1	종료일 이전까지 -->
+<!-- 	 	</if> -->
+<!-- 		ORDER BY om.order_date DESC -->
+<!-- 	 </select> -->
+	  
+	  <!-- 마이페이지 - 리뷰 별점(review_rate) 따로 가져오려고. -->
+	  <select id="selectReviewRateAll" resultType="Integer">	
+	    	SELECT review_rate FROM work_review WHERE member_id = #{member_id} ORDER BY order_member_id DESC
+	  </select>
 	  
 	  <!-- 회원 주문 객체 가져오기(주문 결과 띄우기용) -->
 	  <select id="selectOrderMemberAll" resultType="com.java.vo.Order_MemberVo">	

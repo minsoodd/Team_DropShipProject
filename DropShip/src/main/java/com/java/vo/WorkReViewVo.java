@@ -20,6 +20,7 @@ public class WorkReViewVo {
 	private Date review_date;
 	private int review_rate;
 	private String review_title, review_content;
+	private int order_member_id;
 	
 	// index에서 리뷰가져오기(JOIN) 필요한 변수
 	private String work_name, work_img_url, artist_name;

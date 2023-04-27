@@ -93,6 +93,7 @@
                     <form name="workReviewUpdate" id="workReviewUpdate" action="../shop/work_review_update"  method="post" enctype="multipart/form-data" autocomplete="off">
     					<input type="hidden" name="work_id" value="${param.work_id}">
                         <input type="hidden" name="member_id" value="${param.member_id}">
+                        <input type="hidden" name="order_member_id" value="${param.order_member_id}">
 						
                         <div class="form-box-wrap">
 
@@ -200,7 +201,7 @@
 		// 작품리뷰 삭제 버튼
 		function work_ReviewDeleteBtn(){
 			if(confirm("정말 삭제하시겠습니까?")){
-				location.href = "../shop/work_review_delete?member_id=${workReViewVo.member_id}&work_id=${workReViewVo.work_id}";
+				location.href = "../shop/work_review_delete?member_id=${workReViewVo.member_id}&work_id=${workReViewVo.work_id}&order_member_id=${param.order_member_id}";
 			}
 		}//work_ReviewDeleteBtn
 		

@@ -39,6 +39,9 @@ public interface MyShopMapper {
 	// 마이페이지 - '진행 중인 주문'의 주문상태 가져오려고.
 	List<Order_MemberVo> selectOrderMemberAll(int member_id);
 	
+	// 마이페이지 - 리뷰 별점(review_rate) 따로 가져오려고.
+	List<Integer> selectReviewRateAll(int member_id);
+	
 	// 회원 마이페이지 - 주문조회 클릭시 총 주문 수 보여줄려고
 	int selectOrder_member_count(int member_id, String fr_date, String to_date);   //ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
 	
@@ -80,6 +83,8 @@ public interface MyShopMapper {
 	List<Integer> selectOrderDetail_OptionIds(Integer work_id);	// 작품 팔린 개수 알기위해 주문상세 테이블에서 option_id들 리스트로 가져오기
 
 	List<Integer> selectOptionQuantity(List<Integer> orderDetail_workId_OptionIdList);
+
+
 
 	
 

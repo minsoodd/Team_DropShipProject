@@ -93,6 +93,7 @@
                     <form name="workReview" id="workReview" action="../myshop/mypage"  method="post" enctype="multipart/form-data" autocomplete="off">
     					<input type="hidden" name="work_id" value="${param.work_id}">
                         <input type="hidden" name="member_id" value="${param.member_id}">
+                        <input type="hidden" name="order_member_id" value="${param.order_member_id}">
 						
                         <div class="form-box-wrap">
 

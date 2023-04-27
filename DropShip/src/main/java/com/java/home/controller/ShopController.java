@@ -120,8 +120,8 @@ public class ShopController {
 	}
 	
 	@GetMapping("work_review_update")  // 작품리뷰 수정
-	public String work_review_update(@RequestParam("member_id") int member_id, @RequestParam("work_id") int work_id, Model model ) {
-		workReViewVo = shopservice.selectMemberWorkReViewOne(member_id, work_id); // member 1명의 작품리뷰1개 가져오기
+	public String work_review_update(int member_id, int work_id, int order_member_id, Model model ) {
+		workReViewVo = shopservice.selectMemberWorkReViewOne(member_id, work_id, order_member_id); // member 1명의 작품리뷰1개 가져오기
 		System.out.println("DB들렸다온 workReViewVo 수정 : "+workReViewVo);
 		model.addAttribute("workReViewVo",workReViewVo);
 		
@@ -142,12 +142,10 @@ public class ShopController {
 	}
 	
 	@GetMapping("work_review_delete")  // 작품리뷰 삭제 실행
-	public String work_review_delete(@RequestParam("member_id") int member_id, @RequestParam("work_id") int work_id, Model model) {
-		System.out.println("a태그에서 넘어온 member_id"+member_id);
-		System.out.println("a태그에서 넘어온 work_id"+work_id);
+	public String work_review_delete(int member_id, int work_id, int order_member_id, Model model) {
 		int WorkReViewDeleteResult = 0;
 		if (member_id != 0 && work_id != 0) {
-			shopservice.deleteMemberWorkReViewOne(member_id, work_id);
+			shopservice.deleteMemberWorkReViewOne(member_id, work_id, order_member_id);
 			WorkReViewDeleteResult = 1;
 		}
 		model.addAttribute("WorkReViewDeleteResult",WorkReViewDeleteResult);

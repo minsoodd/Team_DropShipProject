@@ -222,10 +222,20 @@ public class MyShopController {
 				work_idList.add(order_detail_inquireVo.getWork_id()); // [work_id, work_id....]  work_id를 가져온다
 			}
 			
+			List<Integer> order_memberIdList = new ArrayList<>();  // 빈 List를 하나 만들어줌  []   
+			for (Order_Detail_inquireVo order_detail_inquireVo : order_detail_list) {  // [] 안에 채워주기 위해 사용 
+				order_memberIdList.add(order_detail_inquireVo.getOrder_member_id()); 
+			}
+			
 			
 			// work_id를 mypage 뿌려주기위해 사용   (너무 어렵다)  
-			List<Integer> workReviewVoCountList = shopservice.selectMemberWorkReviewCheck(member_id, work_idList);  // work_idList [work_id, work_id, ...]			
+			List<Integer> workReviewVoCountList = shopservice.selectMemberWorkReviewCheck(member_id, work_idList, order_memberIdList);  // work_idList [work_id, work_id, ...]			
 			model.addAttribute("workReviewVoCountList",workReviewVoCountList);
+			
+			
+			// 리뷰 별점은 따로 가져오기 
+			List<Integer> review_rate_list = myShopService.selectReviewRateAll(member_id);
+			model.addAttribute("review_rate_list", review_rate_list);
 			
 		}// 회원인지 확인 if
 		

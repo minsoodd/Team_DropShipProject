@@ -352,20 +352,25 @@ public class ShopServiceImpl implements ShopService {
 	
 	// 작품 리뷰있는지 확인
 	@Override
-	public List<Integer> selectMemberWorkReviewCheck(int member_id, List<Integer> work_idList) {
+	public List<Integer> selectMemberWorkReviewCheck(int member_id, List<Integer> work_idList, List<Integer> order_memberIdList) {
 		List<Integer> workReviewVoCheckList = new ArrayList<>();  
 		
-		for(int work_id : work_idList) {  
-			workReviewVoCheckList.add(shopMapper.selectMemberWorkReviewCheck(member_id, work_id));
+//		for(int work_id : work_idList) {  
+//			workReviewVoCheckList.add(shopMapper.selectMemberWorkReviewCheck(member_id, work_id));
+//		}
+		
+		for(int i = 0; i < work_idList.size(); i++) {
+			workReviewVoCheckList.add(shopMapper.selectMemberWorkReviewCheck(member_id, work_idList.get(i), order_memberIdList.get(i)));
 		}
+		
 		return workReviewVoCheckList;
 	}
 	
 	
 	// member 1명의 작품리뷰1개 가져오기
 	@Override
-	public WorkReViewVo selectMemberWorkReViewOne(int member_id, int work_id) {
-	WorkReViewVo workReViewVo = shopMapper.selectMemberWorkReViewOne(member_id, work_id);
+	public WorkReViewVo selectMemberWorkReViewOne(int member_id, int work_id, int order_member_id) {
+	WorkReViewVo workReViewVo = shopMapper.selectMemberWorkReViewOne(member_id, work_id, order_member_id);
 	return workReViewVo;
 	}
 	
@@ -378,8 +383,8 @@ public class ShopServiceImpl implements ShopService {
 	
 	// member 1명의 작품리뷰1개 삭제하기
 	@Override
-	public void deleteMemberWorkReViewOne(int member_id, int work_id) {
-	shopMapper.deleteMemberWorkReViewOne(member_id, work_id);
+	public void deleteMemberWorkReViewOne(int member_id, int work_id, int order_member_id) {
+	shopMapper.deleteMemberWorkReViewOne(member_id, work_id, order_member_id);
 	
 	}
 	

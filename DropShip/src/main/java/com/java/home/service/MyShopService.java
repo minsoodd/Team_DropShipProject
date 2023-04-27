@@ -32,7 +32,9 @@ public interface MyShopService {
 	
 	// 마이페이지 - '진행 중인 주문'의 주문상태 가져오려고.
 	List<Order_MemberVo> selectOrderMemberAll(int member_id);
-		
+	
+	// 마이페이지 리뷰 따로 가져오기
+	List<Integer> selectReviewRateAll(int member_id);
 	
 	
 	///////////----------↓--------↓------ 주문조회, 주문목록/배송조회 (GetMapping("orderinquiry")) -------------↓--------↓---------//////////
@@ -87,6 +89,8 @@ public interface MyShopService {
 
 	// 장바구니 담긴 개수 가져오는 메소드
 	int getCartCount(int member_id);
+
+	
 
 
 	

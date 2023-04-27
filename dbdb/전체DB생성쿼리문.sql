@@ -719,3 +719,13 @@ ALTER TABLE freeBoard_comment
 MODIFY (comment_pw VARCHAR2(4));
 
 commit;
+
+-- 작품 리뷰 마이페이지에서 중복으로 나오는거 제거 위해 
+-- work_review 테이블에 주문번호 컬럼 추가
+ALTER TABLE Work_Review 
+ADD order_member_id number(4) not null;
+
+ALTER TABLE Work_Review
+ADD CONSTRAINT FK_Review_order_member_id_Order_Member_id
+FOREIGN KEY (order_member_id)
+REFERENCES Order_Member (id);

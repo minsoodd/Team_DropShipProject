@@ -90,6 +90,15 @@ public class MyShopServiceImpl implements MyShopService{
 		return order_MemberVoList;
 	}
 	
+	// 마이페이지 - 리뷰 별점(review_rate) 따로 가져오려고.
+	@Override
+	public List<Integer> selectReviewRateAll(int member_id) {
+		List<Integer> review_rate_list = new ArrayList<>();
+		review_rate_list = myshopMapper.selectReviewRateAll(member_id);
+		return review_rate_list;
+	}
+	
+	
 	// 회원 마이페이지 주문조회 클릭시 총 주문 수 보여줄려고
 	@Override
 	public int selectOrder_member_count(int member_id, String fr_date, String to_date) {	//ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ
@@ -351,6 +360,8 @@ public class MyShopServiceImpl implements MyShopService{
 		
 		return myAiWorkListPageMap;
 	}
+
+	
 
 	
 

@@ -185,8 +185,8 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                     </td>
                                                     <td data-title="상품수량" class="td-numbig">${order_detail_inquireVo.option_quantity}</td>
                                                     <td data-title="주문금액" class="td-numbig td-total">${order_detail_inquireVo.option_selected_price * order_detail_inquireVo.option_quantity+2000} 원</td>
-                                                    <c:if test="${loop.first || order_detail_inquireVo.order_member_id ne prevOrderMemberId}">
-	                                                    <td data-title="주문상태" class="td-state" rowspan="${orderMemberIdCountMap[order_detail_inquireVo.order_member_id]}">
+<%--                                                     <c:if test="${loop.first || order_detail_inquireVo.order_member_id ne prevOrderMemberId}"> --%>
+	                                                    <td data-title="주문상태" class="td-state">
 	                                                        <c:choose>
 	                                                            <c:when test="${order_detail_inquireVo.order_status == 0}">입금확인중</c:when>
 	                                                            <c:when test="${order_detail_inquireVo.order_status == 1}">입금완료</c:when>
@@ -212,7 +212,7 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                         	<c:if test="${workReviewVoCountList.get(loop.index) == 0 }"> 
 							                                	<div><br>
 							                                        <button type="button" class="btnset btn-type01 btn_cart sct_cart" data-it_id="1654133549">
-							                                            <a href="../shop/work_review_write?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}" class="btnset btn-sight">
+							                                            <a href="../shop/work_review_write?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}" class="btnset btn-sight">
 							                                                <svg height="45" width="140">
 							                                                    <rect height="45" width="140"></rect>
 							                                                </svg>
@@ -226,7 +226,7 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                         	<c:if test="${workReviewVoCountList.get(loop.index) == 1}">
                                                         		<div><br>
 							                                        <button type="button" class="btnset btn-type01 btn_cart sct_cart" data-it_id="1654133549">
-							                                            <a href="../shop/work_review_update?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}" class="btnset btn-sight">
+							                                            <a href="../shop/work_review_update?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}" class="btnset btn-sight">
 							                                                <svg height="45" width="140">
 							                                                    <rect height="45" width="140"></rect>
 							                                                </svg>
@@ -236,26 +236,26 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
 							                                        </button>
 							                                    </div><br>
 							                                    <div>
-							                                    	<c:if test="${order_detail_inquireVo.review_rate == 1}">
+							                                    	<c:if test="${review_rate_list.get(loop.index) == 1}">
 								                                    	<img src="../../home/img/s_star1_big.png">
 							                                    	</c:if>
-							                                    	<c:if test="${order_detail_inquireVo.review_rate == 2}">
+							                                    	<c:if test="${review_rate_list.get(loop.index) == 2}">
 								                                    	<img src="../../home/img/s_star2_big.png">
 							                                    	</c:if>
-							                                    	<c:if test="${order_detail_inquireVo.review_rate == 3}">
+							                                    	<c:if test="${review_rate_list.get(loop.index) == 3}">
 								                                    	<img src="../../home/img/s_star3_big.png">
 							                                    	</c:if>
-							                                    	<c:if test="${order_detail_inquireVo.review_rate == 4}">
+							                                    	<c:if test="${review_rate_list.get(loop.index) == 4}">
 								                                    	<img src="../../home/img/s_star4_big.png">
 							                                    	</c:if>
-							                                    	<c:if test="${order_detail_inquireVo.review_rate == 5}">
+							                                    	<c:if test="${review_rate_list.get(loop.index) == 5}">
 								                                    	<img src="../../home/img/s_star5_big.png">
 							                                    	</c:if>
 							                                    </div>
                                                         	</c:if>
 						                                </c:if> 
 	                                                    </td>
-                                                    </c:if>
+<%--                                                     </c:if> --%>
                                                     
                                                 </tr>
                                                 <c:set var="prevOrderMemberId" value="${order_detail_inquireVo.order_member_id}" />
