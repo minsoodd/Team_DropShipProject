@@ -1,0 +1,797 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+<title>랭킹 | 다음영화</title>
+
+<link href="//m2.daumcdn.net/img-media/2010ci/Daum_favicon.ico" rel="shortcut icon">
+<link rel="stylesheet" type="text/css" href="//t1.daumcdn.net/media/kraken/movie/b723d58/PcCommonCssBundle.merged.css" />
+
+<script src="//t1.daumcdn.net/media/kraken/movie/b723d58/common.merged.js"></script>
+<script src="//t1.daumcdn.net/media/kraken/movie/b723d58/PcCommonScriptBundle.merged.js"></script>
+<script src="//t1.daumcdn.net/cssjs/movie/v2/amchart/amcharts.js"></script>
+<script src="//t1.daumcdn.net/cssjs/movie/v2/amchart/serial.js"></script>
+
+<meta property="og:author" content="다음영화" />
+<meta property="og:site_name" content="다음영화" />
+    <meta property="og:title" content="랭킹 | 다음영화" />
+    <meta property="og:image" content="https://t1.daumcdn.net/movie/common/og_default.png" />
+    <meta property="og:description" content="Daum영화에서 자세한 내용을 확인하세요!" />
+</head>
+
+<body class=""> 
+    <div class="direct-link"> 
+        <a href="#mainContent">본문 바로가기</a>
+        <a href="#gnbContent">메뉴 바로가기</a>
+    </div>
+    <div class="kakao_wrap "> 
+<header class="kakao_head" data-tiara-layer="gnb"> 
+    <div class="kakaohead_top">
+        <div class="inner_head" data-tiara-layer="service">
+            <h1 class="tit_daum">
+                <a href="https://daum.net" class="link_daum" data-tiara-layer="logo"><img src="https://t1.daumcdn.net/movie/movie2020/pc/rtn/logo_daum.png" width="44" height="18" class="logo_daum" alt="Daum"></a>
+                <a href="/main" class="tit_service" data-tiara-layer="movie"><span class="ir_wa">영화</span></a>
+            </h1>
+            <strong class="screen_out">관련 서비스</strong>
+            <ul class="list_relservice">
+                <li>
+                    <a href="https://news.daum.net" class="link_relservice" data-tiara-layer="news">뉴스</a>
+                </li>
+                <li>
+                    <a href="https://entertain.daum.net" class="link_relservice" data-tiara-layer="enter">연예</a>
+                </li>
+                <li>
+                    <a href="https://sports.daum.net" class="link_relservice" data-tiara-layer="sports">스포츠</a>
+                </li>
+                <li>
+                    <a href="https://auto.daum.net" class="link_relservice" data-tiara-layer="car">자동차</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div id="wrapMinidaum"></div>
+    <script type="text/javascript">
+        var minidaum_options = {
+            // background 타입 지정 관련 옵션. default: white.
+            bgType: "white", // white, dark, custom(no background)
+
+
+            // logout 시 return url 변경 여부 flag : default: false - 다음탑으로 이동
+            enableLogoutRetun: true, // false - 다음탑으로 이동, true - 현재페이지 혹은 returnUrl 값으로 이동
+            returnUrl: '', // default - 현재페이지(window.location.href)
+
+
+            // 실시간 이슈 사용 여부, default: false
+            disableHotissue: true, // false일 경우 사용, true일 경우 미사용
+
+            // 로고 사용 여부, default: false
+            disableLogo: true, // false일 경우 사용, true일 경우 미사용
+
+            // 티아라 사용 여부, default: false
+            disableTracker: false, // false일 경우 사용, true일 경우 미사용
+
+            // 플래시에 의한 레이어 가림 현상 방지 사용 여부, default: false
+            enableShield: false // false일 경우 미사용, true일 경우 사용
+        }
+    </script>
+    <script src="https://go.daum.net/minidaum_pc.daum" charset="utf-8" type="text/javascript"></script>
+
+
+    <div class="kakaohead_menu">
+        <div class="inner_head">
+            <nav id="gnbContent" class="gnb_movie">
+                <h2 class="screen_out">영화 메인메뉴</h2>
+                <ul data-tiara-layer="tab">
+                    <li class="home ">
+                        <a href="/main" class="link_gnb" data-tiara-layer="home">홈</a>
+                    </li>
+                    <li class="ranking on">
+                        <a href="/ranking/reservation" class="link_gnb" data-tiara-layer="ranking">랭킹</a>
+                        <ul class="list_subgnb">
+                            <li class="on"><a href="/ranking/reservation" class="link_subgnb" data-tiara-layer="reserve">예매순위</a></li>
+                            <li ><a href="/ranking/boxoffice/weekly" class="link_subgnb" data-tiara-layer="boxoffice">박스오피스</a></li>
+                            <li ><a href="/ranking/ott" class="link_subgnb" data-tiara-layer="ott">OTT</a></li>
+                        </ul>
+                    </li>
+                    <li class="premovie ">
+                        <a href="/premovie/theater" class="link_gnb" data-tiara-layer="premovie">상영/예정작</a>
+                        <ul class="list_subgnb">
+                            <li ><a href="/premovie/theater" class="link_subgnb" data-tiara-layer="theater">영화관</a></li>
+                            <li ><a href="/premovie/netflix" class="link_subgnb" data-tiara-layer="netflix">넷플릭스</a></li>
+                            <li ><a href="/premovie/watcha" class="link_subgnb" data-tiara-layer="watcha">왓챠</a></li>
+                        </ul>
+                    </li>
+                    <li class="contents ">
+                        <a href="/contents/news" class="link_gnb" data-tiara-layer="contents">콘텐츠</a>
+                        <ul class="list_subgnb">
+                            <li ><a href="/contents/news" class="link_subgnb" data-tiara-layer="news">영화 뉴스</a></li>
+                            <li ><a href="/contents/1boon" class="link_subgnb" data-tiara-layer="1boon">매거진</a></li>
+                            <li ><a href="/contents/brunch" class="link_subgnb" data-tiara-layer="brunch">브런치</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <a href="javascript:" class="link_search">
+                <span class="ico_movie ico_search">검색하기</span>
+            </a> 
+            <div class="moviesearch_wrap"> 
+                <h2 class="screen_out">검색</h2>
+                <form action="" class="d_sch" role="search">
+                    <fieldset class="fld_sch">
+                        <legend class="screen_out">검색어 입력폼</legend>
+                        <div class="box_search" data-tiara-layer="service search">
+                            <input type="input" class="tf_keyword" name="q" title="검색어 입력" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="영화, 인물 검색"  value="">
+                            <button type="button" class="btn_search"><span class="ico_movie ico_search">검색</span></button>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="suggest_layer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+        <hr class="hide">
+
+        <main class="kakao_content">
+<article id="mainContent" class="kakao_article">
+    <h2 class="screen_out">영화 랭킹 본문</h2>
+    <div class="section_ranking">
+        <div class="head_section">
+            <h3 class="tit_section">예매순위</h3>
+        </div>
+        <div class="box_ranking" data-tiara-layer="list">
+            <ol class="list_movieranking">
+                                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F3a684ccaeb7aeac8e3f060ffe7249f7fe039443a" class="img_thumb" alt="스즈메의 문단속">
+                                    <span class="rank_num">1</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=161806" class="link_story" data-tiara-layer="poster">
+                                        “이 근처에 폐허 없니? 문을 찾고 있어”규슈의 한적한 마을에 살고 있는 소녀 ‘스즈메’는문을 찾아 여행 중인 청년 ‘소타’를 만난다.그의 뒤를 쫓아 산속 폐허에서 발견한 낡은 문.‘스즈메’가 무언가에 이끌리듯 문을 열자 마을에 재난의 위기가 닥쳐오고가문 대대로 문 너머의 재난을 봉인하는 ‘소타’를 도와 간신히 문을 닫는다.“닫아야만 하잖아요, 여기를!”재난을 막았다는 안도감도 잠시,수수께끼의 고양이 ‘다이진’이 나타나 ‘소타’를 의자로 바꿔 버리고일본 각지의 폐허에 재난을 부르는 문이 열리기 시작하자‘스즈메’는 의자가 된 ‘소타’와 함께 재난을 막기 위한 여정에 나선다.“꿈이 아니었어”규슈, 시코쿠, 고베, 도쿄재난을 막기 위해 일본 전역을 돌며 필사적으로 문을 닫아가던 중어릴 적 고향에 닿은 ‘스즈메’는 잊고 있던 진실과 마주하게 되는데…
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=161806" class="link_txt" data-tiara-layer="moviename">스즈메의 문단속</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.0</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">39.8%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.08</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fa0aaca4b87c541b11085139bd941da0996a78ec1" class="img_thumb" alt="더 퍼스트 슬램덩크">
+                                    <span class="rank_num">2</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=164918" class="link_story" data-tiara-layer="poster">
+                                        전국 제패를 꿈꾸는 북산고 농구부5인방의 꿈과 열정,멈추지 않는 도전을 그린 영화
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=164918" class="link_txt" data-tiara-layer="moviename">더 퍼스트 슬램덩크</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.4</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">17.0%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.01.04</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F9347064f88ab6cccbafd14fbdc6c8ca1368ac12e" class="img_thumb" alt="소울메이트">
+                                    <span class="rank_num">3</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=133833" class="link_story" data-tiara-layer="poster">
+                                        “날도 더웠고 수업도 지루했고.. 그렇게 졸리고 나른하던 날에 너를 처음 만났어”1998년, 처음 만났다“누굴 좋아하면 용기내야 된대”2004년, 첫사랑이 생겼다“몰랐어? 나 원래 이렇게 살아”2010년, 각자 어른이 되어간다“가장 그리운 건…너였어”2014년, 흔적을 따라간다“이젠 니 얼굴을 그리고 싶어. 사랑없인 그릴 수조차 없는 그림 말이야”지금, 그리움을 그리다2023년3월 15일,당신의 <소울메이트>가 찾아옵니다.
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=133833" class="link_txt" data-tiara-layer="moviename">소울메이트</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.9</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">9.2%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.15</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fae29b40059d8e51542972dc2654af3548313087d" class="img_thumb" alt="웅남이">
+                                    <span class="rank_num">4</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=167375" class="link_story" data-tiara-layer="poster">
+                                        인간을 초월하는 짐승 같은 능력으로 국제 범죄 조직에 맞서는 웅남이의 좌충우돌 코미디 <웅남이>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=167375" class="link_txt" data-tiara-layer="moviename">웅남이</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.8</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">5.2%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.22</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F931a1b2f24797dae46005ed4375d10960777d827" class="img_thumb" alt="샤잠! 신들의 분노">
+                                    <span class="rank_num">5</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=151654" class="link_story" data-tiara-layer="poster">
+                                        분노한 신들, 혼돈의 세상진정한 슈퍼히어로가 깨어난다신들의 힘을 갖게 된 빌리(애셔 앤젤)와 친구들은각자의 방법으로 슈퍼히어로의 삶을 즐기게 된다.그러던 그들 앞에 잃어버린 힘을 되찾고자그리스 여신 헤스페라(헬렌 미렌)와 칼립소(루시 리우)가 나타나게 되고,세상은 혼돈에 빠지게 되는데…
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=151654" class="link_txt" data-tiara-layer="moviename">샤잠! 신들의 분노</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">6.7</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">4.0%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.15</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fcd8ba9a0ddfa0c21777ecaf688063612b9cfe27c" class="img_thumb" alt="아임 히어로 더 파이널">
+                                    <span class="rank_num">6</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see ">전체관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=167541" class="link_story" data-tiara-layer="poster">
+                                        2022년 겨울 고척스카이돔을 뜨겁게 달궜던 ‘아임 히어로(IM HERO)’ 임영웅의 앵콜 콘서트, 그 대단원의 감동을 재현할 <아임 히어로 더 파이널>이 스크린X로 2023년 관객들을 찾아온다.“제가 마치 트루먼 쇼의 주인공이 된 것 같아요”자신이 영화 ‘트루먼 쇼’의 주인공이 된 것 같다고 말하지만, 그러면서도 팬덤 ‘영웅시대’를 위해 매 순간 혼신의 힘을 다하는 ‘현실 임영웅’의 모습과 진심 어린 인터뷰, 영화에서만 만나볼 수 있는 전국 투어 비하인드 스토리까지.14대 시네마틱 카메라로 촬영해 오직 극장에서만 볼 수 있는 앵글로 특별한 관람 경험을 선사할 임영웅의 <아임 히어로 더 파이널>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=167541" class="link_txt" data-tiara-layer="moviename">아임 히어로 더 파이널</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">9.7</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">3.7%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.01</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F26596baa0b0c54ba0adbc04281a1857e7b878f68" class="img_thumb" alt="치킨래빗: 잃어버린 보물을 찾아서">
+                                    <span class="rank_num">7</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see ">전체관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=157532" class="link_story" data-tiara-layer="poster">
+                                        쫑긋한 귀, 앙증맞은 꼬리, 그리고.. 갑자기 닭발…?!토끼인듯 닭인듯 반반매력으로 무장한 뉴 히어로! ‘치킨래빗’의 탄생!아버지 ‘피터’왕의 뒤를 이을 위대한 모험왕을 꿈꾸며 자란 ‘치킨래빗’은온 국민이 지켜보는 왕립 모험가 협회 테스트에서 형편없는 실력으로 웃음거리가 되고 만다.명예 회복을 위해 아버지가 눈 앞에서 놓쳤던 전설 속 보물 ‘어둠의 햄스터’를 찾고 싶은‘치킨 래빗’은 만능집사 거북이 ‘에이브’, 액션마스터 스컹크 ‘메그’와 함께 모험에 나선다.그러나 보물을 찾아 왕좌를 빼앗기 위해 탈옥한 삼촌 ‘라팡’의 공격과빌런들의 끝없는 방해로 닥친 위기의 순간,‘치킨래빗’에게 숨겨져 있던 특별한 힘이 깨어나게 되는데…과연 ‘치킨래빗’은 ‘어둠의 햄스터’를 찾아 왕국을 지킬 수 있을까?
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=157532" class="link_txt" data-tiara-layer="moviename">치킨래빗: 잃어버린 보물을 찾아서</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">10.0</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">3.1%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.18</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F1011ab6e1bfd5746503f65377108fcd0885ecf37" class="img_thumb" alt="에브리씽 에브리웨어 올 앳 원스＋">
+                                    <span class="rank_num">8</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=165692" class="link_story" data-tiara-layer="poster">
+                                        미국에 이민와 힘겹게 세탁소를 운영하던 에블린은 세무당국의 조사에 시달리던 어느 날남편의 이혼 요구와 삐딱하게 구는 딸로 인해 대혼란에 빠진다.그 순간 에블린은 멀티버스 안에서 수천, 수만의 자신이 세상을 살아가고 있다는 사실을 알게 되고,그 모든 능력을 빌려와 위기의 세상과 가족을 구해야하는 운명에 처한다.
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=165692" class="link_txt" data-tiara-layer="moviename">에브리씽 에브리웨어 올 앳 원스＋</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.1</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">2.8%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.01</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fa43bcffe6f2b9e902c9d59bb2a855693df456525" class="img_thumb" alt="플레인">
+                                    <span class="rank_num">9</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=165993" class="link_story" data-tiara-layer="poster">
+                                        모두를 공포에 몰아넣은 하루…비행기 불시착은 시작에 불과했다!평소와 다를 것 없던 어느 날,기장 ‘토렌스’는 비행기 운행 중 거대한 폭풍우를 만나 정체모를 섬에 불시착한다.살아남았다는 기쁨도 잠시, 비행기를 탈취하려는 무장단체의 인질극이 시작되고,토렌스는 탑승객 중 가장 피해야 할 의문의 살인범 ‘가스파레’와 손을 잡고승객들과 함께 탈출을 시도하는데…무장단체의 표적은 단 하나, 토렌스와 탑승객들!목숨을 건 위험한 탈출 작전이 시작된다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=165993" class="link_txt" data-tiara-layer="moviename">플레인</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">6.2</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">2.3%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.15</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F2c32ea586013cd5cdf8537bad4bbdf727498b58a" class="img_thumb" alt="귀멸의 칼날: 상현집결, 그리고 도공 마을로">
+                                    <span class="rank_num">10</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=167745" class="link_story" data-tiara-layer="poster">
+                                        혈귀가 숨어있는 거리에 잠입한 탄지로 일행.강력한 상현6혈귀 남매 규타로&다키와의 전투 끝에 탄지로 일행은 궁지에 몰린다.절체절명 위기의 순간에도 흔들리지 않는 곧은 의지로규타로에 맞서는 탄지로,젠이츠,이노스케 그리고 음주 우즈이 텐겐.환락의 거리 속 혈귀를 쓰러트리기 위한 그들의 치열한 전투가 시작된다.한편,키부츠지 무잔은 무한성에 상현 혈귀들을 소집시키고탄지로는 새로운 칼을 찾아 도공 마을로 향하는데...
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=167745" class="link_txt" data-tiara-layer="moviename">귀멸의 칼날: 상현집결, 그리고 도공 마을로</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">3.4</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">2.2%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.02</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F38bbcec0c58098c2cd532b3281a699cdf2760747" class="img_thumb" alt="더 웨일">
+                                    <span class="rank_num">11</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=162616" class="link_story" data-tiara-layer="poster">
+                                        “네가 얼마나 놀라운 사람인지 알려주고 싶었어”272kg의 거구로 세상을 거부한 채 살아가는 대학 강사 ‘찰리’는 남은 시간이 얼마 없음을 느끼고 오랫동안 만나지 못한 10대 딸 ‘엘리’를 집으로 초대한다. 그리고, 매일 자신을 찾아와 에세이 한 편을 완성하면 전 재산을 주겠다고 제안한다.
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=162616" class="link_txt" data-tiara-layer="moviename">더 웨일</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.4</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.9%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.01</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fdae69d91dee05da54a630cb63c10109366ccac90" class="img_thumb" alt="대외비">
+                                    <span class="rank_num">12</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=141224" class="link_story" data-tiara-layer="poster">
+                                        “몰랐나? 원래 세상은 더럽고, 인생은 서럽다.”1992년 부산, 밑바닥 정치 인생을 끝내고 싶은 만년 국회의원 후보 ‘해웅’.‘해웅’은 이번 선거에서만큼은 금뱃지를 달 것이라 확신했지만,정치판을 뒤흔드는 권력 실세 ‘순태’에게 버림받으며 지역구 공천에서 탈락한다.“누가 센 지는 손에 뭘 쥐고 있는가 보라 안 했습니까?”‘순태’에 의해 짜여진 선거판을 뒤집기 위해 부산 지역 재개발 계획이 담긴 대외비 문서를 입수한 ‘해웅’.행동파 조폭 ‘필도’를 통해 선거 자금까지 마련한 ‘해웅’은 무소속으로 선거판에 뛰어들어 승승장구한다.‘순태’ 역시 ‘해웅’이 가진 대외비 문서의 존재를 알게 되고, 점차 ‘해웅’의 숨통을 조여오는데…대한민국을 뒤집을 비밀 문서,이 판을 뒤집는 놈이 대한민국을 뒤집는다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=141224" class="link_txt" data-tiara-layer="moviename">대외비</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.1</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.8%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.01</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F44773314b79fb37d34d33ace8c1920707767b915" class="img_thumb" alt="이니셰린의 밴시">
+                                    <span class="rank_num">13</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=162469" class="link_story" data-tiara-layer="poster">
+                                        오늘, 인생의 친구가 절교를 선언했다 아일랜드의 외딴 섬마을 ‘이니셰린’.주민 모두가 인정하는 절친 ‘파우릭’(콜린 파렐)과 ‘콜름’(브렌단 글리슨)은하루도 빠짐없이 함께 술을 마시며 수다를 떨 정도로 다정하고 돈독한 사이다. 어느 날, 돌연 ‘파우릭’에게 절교를 선언하는 ‘콜름’.절교를 받아들일 수 없는 ‘파우릭’은 그를 찾아가 이유를 묻지만돌아오는 건 변심한 친구의 차가운 한마디 - “그냥 이제 자네가 싫어졌어”.관계를 회복해 보려 할수록 상황은 더욱 악화되어 가기만 하고평온했던 그들의 일상과 마을은 점점 파국으로 치닫는데…예고 없이 찾아온 절교 선언, 평온했던 삶이 뜨겁게 타오른다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=162469" class="link_txt" data-tiara-layer="moviename">이니셰린의 밴시</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.2</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.8%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.15</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F31a0cb08a0f5a423dddb916c8509e004992b0b23" class="img_thumb" alt="파벨만스">
+                                    <span class="rank_num">14</span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=163275" class="link_story" data-tiara-layer="poster">
+                                        전 세계가 사랑한 거장 감독 스티븐 스필버그,그 위대한 꿈의 시작!난생 처음 극장에서 스크린을 마주한 순간부터 영화와 사랑에 빠진 소년 ‘새미’(가브리엘 라벨).아빠 ‘버트’(폴 다노)의 8mm 카메라를 들고 일상의 모든 순간을 담기 위해 열중하던 새미는우연히 필름에 포착된 가족의 비밀을 알게 되고 충격에 휩싸인다.진실을 비추는 필름의 힘을 실감한 새미에게 크고 작은 삶의 변화가 일어나고엄마 ‘미치’(미셸 윌리엄스)의 응원으로 영화를 향한 열정은 더욱 뜨거워져만 가는데…영원히 간직하고픈 기억,영화의 모든 순간과 사랑에 빠진다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=163275" class="link_txt" data-tiara-layer="moviename">파벨만스</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.3</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.7%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.22</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Ffc968165caba9b4cf8cb03fde3310b752d64b27c" class="img_thumb" alt="모나리자와 블러드 문">
+                                    <span class="rank_num">15</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=133138" class="link_story" data-tiara-layer="poster">
+                                        붉은 달이 뜨던 밤, 폐쇄병동에서 스스로 탈출한'모나'(전종서)는 화려한 조명에 이끌려 도착한 낯선 도시에서자신의 특별함을 알아챈 기묘한 사람들을 만난다. 모나의 능력으로 일확천금을 꿈꾸는 댄서 '보니'(케이트 허드슨)모나한테 첫눈에 반한 로맨티스트 DJ '퍼즈'(에드 스크레인)모나에게 락 스피릿을 가르친 11살의 소울메이트 '찰리'(에반 휘튼)그리고 모나를 뒤쫓는 언럭키한 경찰 '해롤드'(크레이그 로빈슨)까지완벽한 밤… 완전한 자유? 완성된 운명!새로운 세상으로 향하는 '모나'의 모험이 펼쳐진다.
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=133138" class="link_txt" data-tiara-layer="moviename">모나리자와 블러드 문</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.5</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.6%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.22</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2Fa1894472a41f2396a702f8d3a5a3277a27133ce9" class="img_thumb" alt="서치 2">
+                                    <span class="rank_num">16</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=165601" class="link_story" data-tiara-layer="poster">
+                                        여행을 끝내고 월요일 귀국을 알린 엄마의 영상통화그리고 마중 나간 딸그러나 엄마가 사라졌다경찰에 도움을 요청하지만, 결정적인 단서들이 나오지 않는 가운데,딸 ‘준’은 엄마의 흔적을 찾기 위해엄마가 방문한 호텔의 CCTV, 같이 간 지인의 SNS, 거리뷰 지도까지 온라인에 남아있는 모든 흔적을 검색하는데…이번에는 딸이 사라진 엄마의 흔적을 검색하다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=165601" class="link_txt" data-tiara-layer="moviename">서치 2</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.5</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.5%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.02.22</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F87945a48498b2bd91b146821d68b660dec84226f" class="img_thumb" alt="멍뭉이">
+                                    <span class="rank_num">17</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see ">전체관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=139547" class="link_story" data-tiara-layer="poster">
+                                        "'루니'의 새 집사를 찾아라!"동생 같은 반려견 ‘루니’를 위해 정시 퇴근에 진심인 ‘민수’결혼을 앞둔 그에게 닥친 집사 인생 조기 로그아웃 위기!야심 차게 오픈한 카페는 말아먹고 인생 자체가 위기인 사촌형 '진국','민수'의 다급한 SOS에 고심하다 새 집사 면접을 제안하게 되고.완벽한 집사를 찾기 위해 제주도로 향하는 두 형제의 여정에느닷없는 멍뭉이들의 등장이 이어지는데!뜻밖의 ‘견’명적인 만남함께 하면 개신나고! 개따뜻한!개귀엽 버라이어티 무비!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=139547" class="link_txt" data-tiara-layer="moviename">멍뭉이</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.1</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.4%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.01</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F92273ac8c6e861159e699a68f587e2917d09c897" class="img_thumb" alt="마루이 비디오">
+                                    <span class="rank_num">18</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see15">15세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=166969" class="link_story" data-tiara-layer="poster">
+                                        국내에서 일어난 사건 영상 중 그 수위가 높아 외부로 유출되면 안 되는 영상물 '마루이 비디오'검찰청 지하 보관소에 봉인된 비디오에 대한 소문을 들은 김수찬 PD는 이를 입수해 다큐멘터리를 제작하기로 하는데…영상 속에 담긴 1992년 동성장 여관방 살인사건과 1987년 아미동 일가족 살인사건의 진실은 과연 무엇인가?
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=166969" class="link_txt" data-tiara-layer="moviename">마루이 비디오</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">6.5</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.4%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.02.22</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F1cfb6c3e188f895b9174ced723d2700a99eec7f0" class="img_thumb" alt="원피스 필름 레드">
+                                    <span class="rank_num">19</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=161062" class="link_story" data-tiara-layer="poster">
+                                        오직 목소리 하나로 전 세계를 사로잡은 디바 ‘우타’.그녀가 모습을 드러내는 첫 라이브 콘서트가 음악의 섬 ‘엘레지아’에서 열리고‘ 루피’가 이끄는 밀짚모자 해적단과 함께 수많은 ‘우타’ 팬들로 공연장은 가득 찬다. 그리고 이 콘서트를 둘러싼 해적들과 해군들의 수상한 움직임이 시작되는데…드디어 전세계가 애타게 기다리던 ‘우타’의 등장과 함께 노래가 울려 퍼지고, 그녀가 ‘샹크스의 딸’이라는 충격적인 사실이 드러난다.‘루피’, ‘우타’, ‘샹크스’,세 사람의 과거가 그녀의 노랫소리와 함께 밝혀진다!
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=161062" class="link_txt" data-tiara-layer="moviename">원피스 필름 레드</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">7.7</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.4%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">22.11.30</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="item_poster">
+                            <div class="thumb_item">
+                                <div class="poster_movie">
+                                        <img src="https://img1.daumcdn.net/thumb/C408x596/?fname=https%3A%2F%2Ft1.daumcdn.net%2Fmovie%2F87f40f22955a97cb8d8d2059592cbf3dadba9eac" class="img_thumb" alt="오토라는 남자">
+                                    <span class="rank_num">20</span>
+                                        <span class="txt_tag">
+                                            <span class="ico_movie ico_see see12">12세이상관람가</span>
+                                        </span>
+                                </div>
+                                <div class="poster_info">
+                                    <a href="/moviedb/main?movieId=164920" class="link_story" data-tiara-layer="poster">
+                                        나 혼자 사는 까칠한 이웃 남자오토 O.T.T.O 입니다.모든 것을 포기하려는 ‘오토’(톰 행크스)는 죽고 싶을 타이밍마다 이를 방해하는 이웃들로 분노가 치밀어 오른다.인생 최악의 순간, 뜻하지 않은 이웃들과의 사건들로 인해 ‘오토’는 생각지도 못한 상황으로 흘러가는데…
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="thumb_cont">
+                                <strong class="tit_item">
+                                    <a href="/moviedb/main?movieId=164920" class="link_txt" data-tiara-layer="moviename">오토라는 남자</a>
+                                </strong>
+                                <span class="txt_append">
+                                    <span class="info_txt">평점<span class="txt_grade">8.6</span></span>
+                                    <span class="info_txt">예매율<span class="txt_num">0.4%</span></span>
+                                </span>
+                                <span class="txt_info">
+							        개봉<span class="txt_num">23.03.29</span>
+						        </span>
+                            </div>
+                        </div>
+                    </li>
+            </ol>
+        </div>
+    </div>
+</article>        </main>
+        <hr class="hide">
+
+<footer class="kakao_foot" data-tiara-layer="footer">
+    <div class="inner_foot" data-cloud="pc_news_footer">
+        <div class="direct_link">
+            <h2 class="screen_out">바로가기</h2>
+            <div class="direct_bundle">
+                <div class="item_bundle">
+                    <a href="/main" class="link_txt" data-tiara-layer="home">홈</a>
+                </div>
+                <div class="item_bundle">
+                    <a href="/ranking/reservation" class="link_txt" data-tiara-layer="ranking">랭킹</a>
+                </div>
+                <div class="item_bundle">
+                    <a href="/premovie/theater" class="link_txt" data-tiara-layer="premovie">상영예정작</a>
+                </div>
+                <div class="item_bundle">
+                    <a href="/contents/news" class="link_txt" data-tiara-layer="contents">콘텐츠</a>
+                </div>
+            </div>
+        </div>
+        <h2 class="screen_out">서비스 이용정보</h2>
+        <div class="footer_link">
+            <a href="//news.daum.net/info/intro" class="link_info" data-tiara-layer="info_daumnews">다음뉴스 소개</a>
+            <a href="https://magazine.daum.net/daummovie_notice" class="link_info" data-tiara-layer="notice">공지사항</a>
+            <a href="//news.daum.net/info/bbsrule" class="link_info" data-tiara-layer="bbsrule">게시물 운영원칙</a>
+            <a href="//policy.daum.net/info/info" class="link_info" data-tiara-layer="policy">서비스 약관/정책</a>
+            <a href="//with.kakao.com/media" class="link_info" data-tiara-layer="harmony">뉴스제휴</a>
+            <a href="//business.kakao.com/" class="link_info" data-tiara-layer="adinfo">비즈니스</a>
+            <a href="//cs.daum.net/redbell/top.html" class="link_info" data-tiara-layer="redbell">권리침해신고</a>
+            <a href="//cs.daum.net/faq/32.html" class="link_info" data-tiara-layer="movie_consumer">영화 고객센터</a>
+        </div>
+        <div class="footer_link">
+            <a href="//news.daum.net/info/newscenter24" class="link_info" data-tiara-layer="newscenter">24시간 뉴스센터</a>
+            <a href="//news.daum.net/info/edit" class="link_info" data-tiara-layer="principle">서비스원칙</a>
+            <span class="link_info">기사배열책임자 : 황유지</span>
+            <span class="link_info">청소년보호책임자 : 손성희</span>
+        </div>
+        <div class="info_copyright">
+            <strong class="info_warn">위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 <br>글쓴이에 있으며, Kakao의 입장과 다를 수 있습니다.</strong>
+            <small class="txt_copyright">Copyright © <a href="http://www.kakaocorp.com/" class="link_kakao">Kakao Corp.</a> All rights reserved.</small>
+        </div>
+        <a href="javascript:" class="btn_top" data-tiara-layer="top_button"><span class="inner_top"><span class="ico_movie ico_top"></span></span>TOP</a>
+    </div>
+</footer>
+        <script src="//t1.daumcdn.net/media/kraken/movie/b723d58/PcRankingReservationRankBundle.merged.js"></script>
+
+<script src="//t1.daumcdn.net/media/kraken/movie/b723d58/PcCommonEventBundle.merged.js"></script>    </div>
+</body>
+</html>
