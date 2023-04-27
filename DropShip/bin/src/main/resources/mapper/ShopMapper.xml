@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.ShopMapper">
+
+	<!--//////////////////       ↓  Work(작품) 관련 ↓         /////////////////////////  -->
+	
+	<!-- 작품 그림작품 가져오기 -->
+	<select id="selectWorkList" resultType="com.java.vo.WorkVo">
+		SELECT * FROM (SELECT ROWNUM rnum, a.* FROM 
+		(SELECT w.id AS id, work_name, w.artist_id, work_img_url, work_price, a.artist_korean_name as artist_name
+		FROM Work w JOIN Artist a ON w.artist_id = a.id ORDER BY artist_id asc) a)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		
+		<!-- SELECT w.id AS id, work_name, w.artist_id, work_img_url, work_price, a.artist_korean_name AS artist_name  
+		FROM Work w JOIN Artist a ON w.artist_id = a.id
+		ORDER BY Artist_id ASC -->
+	</select>
+	
+	<!-- MD-Pick 슬라이드쇼 랜덤으로 보여질 수 있게 일단 모든 작품 다 가져옴 -->	
+	<select id="selectWorkAll" resultType="com.java.vo.WorkVo">
+		SELECT * FROM work w 
+		JOIN Artist a ON w.artist_id = a.id
+		WHERE work_available = 1
+	</select>
+	
+	
+	<!-- 작품 갯수 확인 -->
+	<select id="selectWorkCount" resultType="int">
+		SELECT COUNT(*) count FROM work
+	</select>
+	
+	<!-- 작품 베스트(판매량 상위 6개) 가져오기 -->
+	<select id="selectWorkBest" resultType="com.java.vo.WorkVo">
+		SELECT w.id, w.work_name, w.work_img_url, w.artist_id, 
+			w.work_price, a.artist_korean_name as artist_name 
+			, SUM(wo.option_quantity) AS total_sale_quantity
+		FROM Work w
+		JOIN Order_Detail od ON W.id = od.work_id
+		JOIN Work_Option wo ON OD.option_id = wo.id
+		JOIN Artist a ON w.artist_id = a.id
+		GROUP BY w.id, w.work_name, w.work_img_url, w.artist_id, 
+				 w.work_price, a.artist_korean_name
+		ORDER BY total_sale_quantity DESC
+		FETCH NEXT 6 ROWS ONLY
+	</select>
+	
+	<!-- 작품 new 가져오기 -->
+	<select id="selectWorkNew" resultType="com.java.vo.WorkVo">
+		SELECT * FROM (SELECT rownum rnum, n.* FROM 
+		(SELECT w.id AS id, work_name, artist_id, a.artist_korean_name AS artist_name, work_img_url, work_content, work_reg_date
+		FROM Work w JOIN Artist a
+		on w.artist_id = a.id
+		ORDER BY work_reg_date DESC) n )
+		WHERE rnum between 1 and 5
+	</select>
+	
+	<!-- 작품(구매창) 1개 가져오기 -->
+	<select id="selectWorkBuy" resultType="com.java.vo.WorkVo">
+		SELECT * FROM (
+	        SELECT w.id AS id, w.work_name, a.id AS artist_id, 
+	        	   w.work_genre, w.work_subject, w.work_img_url, w.work_content, w.work_sale, w.work_isBest,
+			       w.work_reg_date, w.work_price, w.work_display_position, w.work_hit, w.admin_id, work_available,
+			       a.artist_korean_name AS artist_name
+	        FROM Work w
+	        JOIN Artist a ON w.artist_id = a.id
+        ) 
+   	    WHERE id = #{work_id}
+	</select>
+	
+	<!-- 작가의 작품들 가져오기 -->
+	<select id="selectWorkArtistAll" resultType="com.java.vo.WorkVo">
+		SELECT w.id AS id, work_name, artist_id, a.artist_korean_name AS artist_name,
+				work_img_url, work_price, work_hit  
+		FROM Work w
+		JOIN Artist a ON w.artist_id = a.id
+		WHERE w.artist_id = #{artist_id}
+		ORDER BY work_hit DESC
+	</select>  
+	
+
+
+<!-- 전체 검색 -->
+	<!-- 전체 검색 -->
+	<select id="search" resultType="com.java.vo.WorkVo">
+		SELECT w.*, a.id, a.artist_korean_name FROM work w
+        JOIN Artist a ON w.artist_id = a.id WHERE 
+	 	w.work_name LIKE '%'||#{searchWord}||'%' OR a.artist_korean_name LIKE '%'||#{searchWord}||'%'
+	</select>
+	<!-- 전체 검색 -->
+	<!-- 전체 검색 -->
+
+
+
+	<!--//////////////////       ↓  Artist(작가)관련 ↓         /////////////////////////  -->
+	
+	<!-- 작가 전체 가져오기 -->
+	<select id="selectArtistAll" resultType="com.java.vo.ArtistVo">
+		SELECT * FROM artist WHERE id = #{artist_id} 
+	</select>
+	
+	<!-- 작가 총 갯수 -->
+	<select id="selectArtistCount" resultType="int">
+		SELECT COUNT(*) count FROM artist 
+	</select>
+	
+	<!-- index에서 작가별 작가페이지 작가 가져오기 -->
+	<select id="selectArtistList" resultType="com.java.vo.ArtistVo">
+		SELECT * FROM (SELECT rownum rnum, a.* FROM 
+		(SELECT id, artist_korean_name, artist_english_name, artist_img_url 
+		FROM artist ORDER BY id asc) a)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	
+	<!--//////////////////       ↓  order(주문)관련 ↓         /////////////////////////  -->
+	
+	<!-- 작품 1개 가져오기 (주문할때 사용)-->
+	<select id="selectWorkOneOrder" resultType="com.java.vo.WorkVo">
+		SELECT w.id AS id, w.work_name, w.work_img_url ,a.artist_korean_name AS artist_name, 
+				w.work_price, w.artist_id
+		FROM Work w
+		JOIN Artist a ON w.artist_id = a.id
+		WHERE w.id = #{id}
+	</select>
+	
+	
+	<!-- 회원 주문 저장  -->
+<!-- 	<insert id="insertOrder_Member">   -->
+<!-- 	  	INSERT INTO Order_Member (id, member_id, order_date, order_status, delivery_id, delivery_name,  -->
+<!-- 	  	delivery_phone, delivery_zip, delivery_road, delivery_address, delivery_request) -->
+<!-- 		VALUES (Order_Member_SEQ.NEXTVAL, #{member_id}, SYSDATE, 0, #{delivery_id}, #{delivery_name},  -->
+<!-- 		#{delivery_phone}, #{delivery_zip}, #{delivery_road}, #{delivery_address}, #{delivery_request}) -->
+<!--   	</insert> -->
+  	
+  	
+  	
+  	<!-- 회원 주문 저장 후 order_member_seq.currval(회원 주문 고유번호) 가져오기 -->
+<!-- 	<select id="selectOrderMemberSeq" resultType="int"> -->
+<!-- 		SELECT Order_Member_SEQ.CURRVAL FROM DUAL -->
+<!-- 	</select> -->
+	
+	<!-- 작품 옵션 저장 후 Work_Option_SEQ.CURRVAL(작품 옵션 고유번호) 가져오기 -->
+  	<insert id="insertOption" parameterType="com.java.vo.OptionVo">
+	    <selectKey resultType="int" keyProperty="id" order="BEFORE">
+	        SELECT work_option_seq.nextval FROM dual
+	    </selectKey>
+	    INSERT INTO work_option VALUES (#{id}, #{option_size}, #{option_size_added_price}, 
+		    #{option_media}, #{option_media_price_multiple}, #{option_mattier}, #{option_frame}, #{option_frame_added_price}, 
+		    #{option_matt}, #{option_matt_added_price}, #{option_quantity}, #{option_selected_price})
+	</insert>
+	
+	
+	
+	
+	
+	
+	
+<!-- 	회원 주문상세 저장 (cart에서 주문할때도 가능하게)  -->
+<!-- 	<insert id="insertOrder_Details" parameterType="java.util.List"> -->		<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ -->
+<!-- 	    INSERT ALL -->
+<!-- 	    <foreach collection="workIdList" item="workId" index="index" separator=" "> -->
+<!-- 	        INTO order_detail (id, order_member_id, work_id, option_id, total_price, -->
+<!-- 	        				event_work_sale, event_period_sale, final_price) -->
+<!-- 	        VALUES (Order_Detail_SEQ.NEXTVAL, #{order_member_id}, #{workId}, #{optionIdList[${index}]}, #{total_price},  -->
+<!-- 	        0, 0, #{total_price}) -->
+<!-- 	    </foreach> -->
+<!-- 	    SELECT * FROM DUAL -->
+<!-- 	</insert> -->
+	
+	
+	
+	
+	 
+	  
+	  
+	<!-- 회원 마이페이지주문 상세조회(join5번 하는 경우)  -->
+	  <select id="selectOptionOneInquiryView" resultType="com.java.vo.Order_Detail_inquire_viewVo">
+	    SELECT om.id, om.order_date, om.delivery_name, om.delivery_phone, om.delivery_zip, om.delivery_road, om.delivery_address, om.delivery_request,
+		       wo.option_size, wo.option_size_added_price, wo.option_media, wo.option_media_price_multiple, wo.option_mattier, wo.option_frame,
+		       wo.option_frame_added_price, wo.option_matt, wo.option_matt_added_price, wo.option_quantity, wo.option_selected_price,
+		       a.artist_korean_name,
+		       w.work_name, w.work_price, w.work_img_url, w.id AS work_id,
+		       m.member_name, m.member_phone, m.member_zip, m.member_road, m.member_addr, m.member_email
+		FROM Order_Member om
+		JOIN Order_Detail od ON om.id = od.order_member_id
+		JOIN Work_Option wo ON od.option_id = wo.id
+		JOIN Work w ON od.work_id = w.id
+		JOIN Artist a ON w.artist_id = a.id
+		JOIN Member m ON om.member_id = m.id
+		WHERE om.id = #{order_member_id}
+	  </select>
+	<!-- 위 방식은 무식하게 조인으로 한번에 하는 방식. 편하지만 테이블에 데이터 많아지면 느려질 수.  -->
+	
+	
+	  
+	  <!-- 회원 주문 상세/ 회원 장바구니 조희용 option객체들 가져오기 -->
+<!-- 	  <select id="selectOptionList" resultType="com.java.vo.OptionVo"> -->
+<!-- 	  	SELECT * FROM work_option WHERE id IN ( -->
+<!--             <foreach collection="optionIdList" item="optionId" separator=","> -->
+<!--                 #{optionId} -->
+<!--             </foreach> -->
+<!--         ) ORDER BY id DESC -->
+<!-- 	  </select> -->
+
+	  <select id="selectOptionList" resultType="com.java.vo.OptionVo">
+		    <if test="optionIdList != null and optionIdList.size() > 0">
+		        SELECT * FROM work_option WHERE id IN (
+		            <foreach collection="optionIdList" item="optionId" separator=",">
+		                #{optionId}
+		            </foreach>
+		        ) ORDER BY id DESC
+		    </if>
+	  </select>
+	  
+	  <!-- 회원 주문 상세용 work객체들 가져오기 -->
+	  <select id="selectShopWorkList" resultType="com.java.vo.WorkVo">
+	  	SELECT * FROM work WHERE id = #{workId}
+	  </select>
+	  
+	  
+	  <!-- 비교할 작품id들이 담긴 List<Integer>를 받아와서 해당되는 workVo 2개를 List<WorkVo>로 리턴해주기 -->
+	  <!-- 비교할 작품id들이 담긴 List<Integer>를 받아와서 해당되는 workVo 2개를 List<WorkVo>로 리턴해주기 -->
+	  <select id="selectWorkCompare" resultType="com.java.vo.WorkVo">
+	  	SELECT w.*, a.id, a.artist_korean_name FROM work w
+        JOIN Artist a ON w.artist_id = a.id
+        WHERE w.id IN (
+            <foreach collection="compare_work_id_list" item="compare_work_id" separator=",">
+                #{compare_work_id}
+            </foreach>
+        ) 
+        ORDER BY w.id DESC
+	  </select>
+	  <!-- 작품비교를 위해 아이디 값을 원하는 work.id 가져오기 -->
+	  <!-- 작품비교를 위해 아이디 값을 원하는 work.id 가져오기 -->
+	  
+	  
+	  <!-- 회원 주문 상세용 Artist객체들 가져오기 -->
+	  <select id="selectArtistOrderList" resultType="com.java.vo.ArtistVo">
+	  	SELECT artist_korean_name FROM artist WHERE id IN (
+            <foreach collection="artistIdList" item="artistId" separator=",">
+                #{artistId}
+            </foreach>
+        ) ORDER BY id DESC
+	  </select>
+	  
+	  
+     
+			
+</mapper>

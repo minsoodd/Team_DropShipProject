@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.BoardEventMapper"> 
+	
+	<!-- 이벤트 상태 변경하기: 시작 상태로 변경하기 -->
+	<update id="updateEventboard_status_start">
+		UPDATE eventboard 
+		SET eventboard_status = 1 
+		WHERE (eventboard_status = 0 OR eventboard_status = 2) 
+		AND eventboard_start <![CDATA[ <= SYSDATE 
+		AND SYSDATE <= eventboard_end]]>
+	</update>
+	
+	<!-- 이벤트 상태 변경하기: 종료 상태로 변경하기 -->
+	<update id="updateEventboard_status_end">
+		UPDATE eventboard 
+		SET eventboard_status = 0 
+		WHERE eventboard_status = 1 
+		AND eventboard_start <![CDATA[ < SYSDATE 
+		AND SYSDATE> eventboard_end]]>
+	</update>
+	
+	<!-- 이벤트 리스트 정렬 - 어드민 페이지용 -->
+	<select id="selectEventList" resultType="com.java.vo.BoardEventVo">
+		SELECT *
+		FROM (
+		  SELECT rownum rnum, a.*
+		  FROM (
+		    SELECT e.id AS id, e.eventboard_istop, e.admin_id AS admin_id, a.admin_login_id, a.admin_name,
+		    e.eventboard_title, e.eventboard_content, e.eventboard_date, e.eventboard_update_date,
+		    e.eventboard_file_name, e.eventboard_hit, e.eventboard_status, e.eventboard_start, e.eventboard_end
+		    FROM eventboard e
+		    JOIN admin a ON e.admin_id = a.id
+		    ORDER BY e.eventboard_istop DESC, e.eventboard_status DESC, e.eventboard_start DESC, e.id ASC 
+		  ) a
+		) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+
+	</select>
+	
+	<!-- 이벤트 리스트 정렬 - 프론트용 -->
+	<select id="selectEventListAll" resultType="com.java.vo.BoardEventVo">
+		SELECT *
+		FROM (
+		  SELECT rownum rnum, a.*
+		  FROM (
+		    SELECT e.id AS id, e.eventboard_istop, e.admin_id AS admin_id, a.admin_login_id, a.admin_name,
+		    e.eventboard_title, e.eventboard_content, e.eventboard_date, e.eventboard_update_date,
+		    e.eventboard_file_name, e.eventboard_hit, e.eventboard_status, e.eventboard_start, e.eventboard_end
+		    FROM eventboard e
+		    JOIN admin a ON e.admin_id = a.id
+		    WHERE e.eventboard_status = 0 or e.eventboard_status = 1
+		    ORDER BY e.eventboard_istop DESC, e.eventboard_status DESC, e.eventboard_start DESC, e.id ASC   
+		  ) a
+		) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 이벤트 진행 중 리스트만 정렬 - 프론트용 -->
+	<select id="selectEventListOn" resultType="com.java.vo.BoardEventVo">
+		SELECT * FROM (
+	    SELECT rownum rnum, a.*
+	    FROM (
+	        SELECT e.id AS id, e.eventboard_istop, e.admin_id AS admin_id, a.admin_login_id, a.admin_name,
+	        e.eventboard_title, e.eventboard_content, e.eventboard_date, e.eventboard_update_date,
+	        e.eventboard_file_name, e.eventboard_hit, e.eventboard_status, e.eventboard_start, e.eventboard_end
+	        FROM eventboard e
+	        JOIN admin a ON e.admin_id = a.id
+	        WHERE e.eventboard_status = 1
+	        ORDER BY e.eventboard_istop DESC, e.eventboard_date DESC, e.id ASC
+	    ) a
+		) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 이벤트 종료된 리스트만 정렬 - 프론트용 -->
+	<select id="selectEventListOff" resultType="com.java.vo.BoardEventVo">
+		SELECT * FROM (
+	    SELECT rownum rnum, a.*
+	    FROM (
+	        SELECT e.id AS id, e.eventboard_istop, e.admin_id AS admin_id, a.admin_login_id, a.admin_name,
+	        e.eventboard_title, e.eventboard_content, e.eventboard_date, e.eventboard_update_date,
+	        e.eventboard_file_name, e.eventboard_hit, e.eventboard_status, e.eventboard_start, e.eventboard_end
+	        FROM eventboard e
+	        JOIN admin a ON e.admin_id = a.id
+	        WHERE e.eventboard_status = 0
+	        ORDER BY e.eventboard_istop DESC, e.eventboard_date DESC, e.id ASC
+	    ) a
+		) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 이벤트 게시글 개수 확인 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) count FROM eventboard
+	</select>
+	
+	<!-- 이벤트 진행 중인 게시글 개수 확인 -->
+	<select id="selectCountEventOn" resultType="int">
+		SELECT COUNT(*) count FROM eventboard where eventboard_status = 1
+	</select>
+	
+	<!-- 이벤트 종료된 게시글 개수 확인 -->
+	<select id="selectCountEventOff" resultType="int">
+		SELECT COUNT(*) count FROM eventboard where eventboard_status = 0
+	</select>
+		
+	<!-- 이벤트 1개 저장하기 -->	
+	<insert id="insertEventAdd">  
+	  	INSERT INTO eventboard VALUES (eventboard_SEQ.nextval, #{eventboard_istop}, 
+	  	#{admin_id}, #{eventboard_title}, #{eventboard_content}, sysdate, sysdate, #{eventboard_file_name}, 0, #{eventboard_start}, #{eventboard_end}, #{eventboard_status})
+  	</insert>
+	
+	<!-- 이벤트 1개 상세 가져오기 -->
+  	<select id="selectEventOne" resultType="com.java.vo.BoardEventVo">
+  		SELECT * FROM eventboard WHERE id = #{id}
+	</select>
+	
+	<!-- 이벤트 1개 가져올 때 마다 조회수 1 증가시키기 -->
+	<update id="updateEventBoard_hit">
+		update eventboard set eventboard_hit = eventboard_hit + 1 where id = #{id}
+	</update>
+	
+	<!-- 이벤트 1개 수정하기 -->
+	<update id="updateEventBoard">
+		UPDATE eventboard SET eventboard_istop = #{eventboard_istop}, eventboard_status = #{eventboard_status}, eventboard_title = #{eventboard_title}, 
+		eventboard_content = #{eventboard_content}, eventboard_update_date = sysdate, eventboard_file_name = #{eventboard_file_name}, eventboard_start = #{eventboard_start}, eventboard_end = #{eventboard_end} WHERE id = #{id}
+	</update>
+	
+	<!-- 이벤트 1개 삭제하기 -->
+  	<delete id="deleteEventOne">
+  		DELETE FROM eventboard WHERE id = #{id}
+	</delete>
+	
+	<!-- 이전글 -->
+	<select id="preSelectEventOne" resultType="com.java.vo.BoardEventVo">
+		select * from eventboard 
+		where id = 
+		(select prev_id from
+		(select id,eventboard_title, lead(id,1,-1) over(order by id desc) as prev_id
+		from eventboard) 
+		where id = #{id})
+	</select>
+	
+	<!-- 다음글 -->
+	<select id="nextSelectEventOne" resultType="com.java.vo.BoardEventVo">
+		select * from eventboard 
+		where id = 
+		(select next_id from
+		(select id,eventboard_title, lag(id,1,-1) over(order by id desc) as next_id
+		from eventboard) 
+		where id = #{id})
+	</select>
+	
+</mapper>

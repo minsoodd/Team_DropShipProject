@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.MyShopMapper">
+	<!--//////////////////↓////////////↓////////order(주문) 관련 //////////////////↓////////////↓//////// -->
+	
+	<!-- 주문 저장 전 배송 데이터 저장  -->
+	<insert id="insertDelivery">  				
+	  	INSERT INTO Delivery (id, delivery_start, delivery_end)
+		VALUES (Delivery_SEQ.NEXTVAL, sysdate+1, sysdate+3)
+  	</insert>
+  	
+  	<select id="selectDeliverySeq" resultType="int">	
+  		SELECT DELIVERY_SEQ.CURRVAL FROM DUAL
+  	</select>
+	
+	<insert id="insertDelivery2">			
+	    <selectKey resultType="int" keyProperty="id" order="AFTER">
+	        SELECT Delivery_SEQ.currval FROM dual
+	    </selectKey>
+	    INSERT INTO Delivery (id, delivery_start, delivery_end)
+		VALUES (Delivery_SEQ.nextval, sysdate+1, sysdate+3)
+	</insert>
+	
+	<insert id="insertOrder_Member2" >		
+	    <selectKey resultType="int" keyProperty="order_memberVo.id" order="BEFORE">  <!-- keyProperty를 원랜 id만 적어도 넘어온 vo의 id인스턴수 변수를 찾을 수 있는데 인자로 여러개 넘어오면 이렇게 뭐의 id인지 지정해줘야.  -->
+	        SELECT Order_Member_SEQ.nextval FROM dual
+	    </selectKey>
+	    INSERT INTO Order_Member (id, member_id, order_date, order_status, delivery_id, delivery_name, 
+		  	delivery_phone, delivery_zip, delivery_road, delivery_address, delivery_request)
+			VALUES (#{order_memberVo.id}, #{member_id}, SYSDATE, 0, #{delivery_id}, #{order_memberVo.delivery_name}, 
+			#{order_memberVo.delivery_phone}, #{order_memberVo.delivery_zip}, #{order_memberVo.delivery_road}, #{order_memberVo.delivery_address}, #{order_memberVo.delivery_request})
+	</insert>
+	
+	<!-- 아래 방식은 조인 적게하는 대신 여러번 걸쳐서 가져오는 방식. 유지보수/확장성 장점  -->
+	<!--  회원 주문 상세 객체 리스트를 받아옴 -->
+	  <select id="selectOrderDetail" resultType="com.java.vo.Order_DetailVo">	
+	  	SELECT work_id, option_id 
+	  	FROM order_detail 
+	  	WHERE order_member_id = #{order_member_id}
+	  </select>
+	
+	
+	<!-- 회원 주문 객체 가져오기(주문 결과 띄우기용) -->
+	<select id="selectOrderMemberOne_result" resultType="com.java.vo.Order_MemberVo">	
+		SELECT * FROM Order_Member WHERE id = #{order_member_id}
+	</select>
+	
+	<!-- 회원 주문상세 저장 (작품상세페이지에서만 넘어왔을 때)  -->
+	<insert id="insertOrder_Detail">						
+		 INSERT INTO Order_Detail (id, order_member_id, work_id, option_id, total_price, 
+		 							event_work_sale, event_period_sale, final_price)
+		 VALUES (Order_Detail_SEQ.NEXTVAL, #{order_member_id}, #{work_id}, #{option_id}, #{total_price}, 
+		 		0, 0, #{total_price})	<!-- 마지막  #{total_price}는 원랜 final_price가 되어야 함. 근데 할인 구현 안하고있으니까 그냥 total_price로 넣음 -->
+	</insert>
+	
+
+	 <!-- 회원 마이페이지주문조회 (날짜 검색도) -->
+	 <select id="selectOrderDetailByMemberId" resultType="com.java.vo.Order_Detail_inquireVo">	
+	    SELECT om.order_date, od.order_member_id, w.work_img_url, w.work_name, a.artist_korean_name, 
+	    	   wo.option_quantity, wo.option_selected_price, om.order_status
+			FROM order_detail od
+			JOIN order_member om ON od.order_member_id = om.id
+			JOIN work w ON od.work_id = w.id
+			JOIN artist a ON w.artist_id = a.id
+			JOIN work_option wo ON od.option_id = wo.id
+		WHERE member_id = #{member_id}
+	 <if test="(fr_date != null and fr_date != '') and (to_date != null and to_date != '')">	<!-- 검색 시작일 종료일 둘 다 있으면 -->
+			<![CDATA[
+			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= TO_DATE(#{to_date})+1
+			]]>
+	 </if>
+	 <if test="(fr_date != '' and fr_date != null) and (to_date == '' or to_date == null)">	<!-- 시작일 있고 & 종료일이 없으면 --><!-- 종료일을 오늘로 함 -->
+			<![CDATA[									
+			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= sysdate	
+			]]>
+	 </if>
+	 <if test="(fr_date == '' or fr_date != null) and (to_date == '' or to_date == null)">	<!-- 시작일 & 종료일 둘 다 없으면 --><!-- 전체. 그냥 넘어가 -->
+	 </if>
+	 <if test="fr_date == '' and to_date != ''">	<!-- 시작일이 없고 & 종료일 있으면 -->
+			AND om.order_date <![CDATA[<=]]> TO_DATE(#{to_date})+1	<!-- 종료일 이전까지 -->
+	 </if>
+		ORDER BY om.order_date DESC
+	 </select>
+	  
+	  <!-- 회원 주문 객체 가져오기(주문 결과 띄우기용) -->
+	  <select id="selectOrderMemberAll" resultType="com.java.vo.Order_MemberVo">	
+	    	SELECT * FROM Order_Member WHERE member_id = #{member_id}
+	  </select>
+	  
+	  
+	  
+	  
+	  
+	  <!-- 회원 마이페이지주문조회시 회원 주문 개수 가져오기  -->
+	  <select id="selectOrder_member_count" resultType="int">	<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ -->
+	    SELECT COUNT(*) FROM order_member om
+		WHERE member_id = #{member_id}
+		<if test="(fr_date != null and fr_date != '') and (to_date != null and to_date != '')">	<!-- 검색 시작일 종료일 둘 다 있으면 -->
+			<![CDATA[
+			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= TO_DATE(#{to_date})
+			]]>
+		</if>
+		<if test="(fr_date != '' and fr_date != null) and (to_date == '' or to_date == null)">	<!-- 시작일 있고 & 종료일이 없으면 --><!-- 종료일을 오늘로 함 -->
+			<![CDATA[									
+			AND om.order_date >= TO_DATE(#{fr_date}) AND om.order_date <= sysdate	
+			]]>
+		</if>
+		<if test="(fr_date == '' or fr_date != null) and (to_date == '' or to_date == null)">	<!-- 시작일 & 종료일 둘 다 없으면 --><!-- 전체 -->
+		</if>
+		<if test="fr_date == '' and to_date != ''">	<!-- 종료일은 있는데 시작일이 없으면 -->
+			AND om.order_date <![CDATA[<=]]> TO_DATE(#{to_date})	<!-- 종료일 이전까지 -->
+		</if>
+	  </select>
+
+
+	<!-- 회원 장바구니 저장  -->
+	 <insert id="insertCart_Member">	<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ -->
+	 	 INSERT INTO Cart_Member
+		 VALUES (CART_MEMBER_SEQ.NEXTVAL, #{member_id}, #{work_id}, #{option_id}, sysdate)
+	 </insert>
+	  
+	  <!-- 회원 장바구니 가져오기 -->
+	 <select id="selectCart_MemberList" resultType="com.java.vo.Cart_MemberVo">	<!-- ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ -->
+	  	SELECT * FROM Cart_Member WHERE member_id = #{member_id} ORDER BY added_date desc
+     </select>
+
+	<!-- 장바구니에서 일부 작품을 구매한거라면? -->
+     <delete id="deleteCart_member">
+		  DELETE FROM cart_member
+		  WHERE member_id = #{member_id}
+		  AND option_id IN (
+            <foreach collection="optionIdList" item="optionId" separator=",">
+                #{optionId}
+            </foreach>
+           )
+	  </delete>
+
+	<!--///////////////////////////////////////드론/////////////////////////////////////////////  -->
+	  <select id="selectFind_Dronshipment" resultType="com.java.vo.Order_MemberVo">
+	 	 select * from order_member where id=#{id}
+	  </select>
+	  <!--/////////////////////////////////////////////////////////////////////////////////////////////  -->
+
+	<!--//////////////////↓////////////↓//////// 찜 리스트 관련 //////////////////↓////////////↓//////// -->
+	<!-- 찜리스트 page 처리해서 가져오기 -->
+	<select id="selectWishlistpage" resultType="com.java.vo.WishListVo">
+		SELECT * FROM (SELECT ROWNUM rnum, a.* FROM
+      (SELECT w.id, w.member_id, w.work_id, w.added_date , work_name, wo.artist_id, work_img_url, work_price, a.artist_korean_name AS artist_name
+		FROM Wishlist w
+		JOIN Work wo ON w.work_id = wo.id
+		JOIN Artist a ON wo.artist_id = a.id
+		WHere w.member_id = #{member_id}
+		ORDER BY added_date desc) a)
+        where rnum BETWEEN #{startRow} AND #{endRow}
+	</select>	
+	
+	<!-- 찜리스트 갯수 확인 -->
+<!-- 	<select id="selectWishListCount" resultType="int"> -->
+<!-- 		SELECT COUNT(*) count FROM wishlist where member_id = #{member_id} -->
+<!-- 	</select> -->
+	
+	<!-- 찜리스트 갯수 확인 -->
+	<select id="selectWishListCount" resultType="int">
+		SELECT COUNT(*) count FROM ${tableName} where ${columnName} = #{member_id}	<!-- ${}는 테이블명/컬럼명에 사용 -->
+	</select>
+
+	<!-- index에서 찜 리스트에 작품이 있는지 확인 -->
+	<select id="selectWorkWishListCheck" resultType="int">
+	    SELECT COUNT(*) FROM Wishlist where member_id = #{member_id} AND work_id = #{work_id} 
+	</select>
+	
+	<!-- 찜리스트에 member_id가 저장한 작품이 있는지 확인 -->
+	<select id="selectWishlistCount" resultType="int">
+		SELECT COUNT(*) FROM Wishlist WHERE member_id = #{member_id} 
+	</select>
+	
+	<!-- wishlist페이지에 보여주는 작품 가져오기 -->
+	<select id="selectMypageView" resultType="com.java.vo.WishListVo">
+		SELECT w.id, w.member_id, w.work_id, w.added_date , work_name, wo.artist_id, work_img_url, work_price, a.artist_korean_name AS artist_name
+		FROM Wishlist w
+		JOIN Work wo ON w.work_id = wo.id
+		JOIN Artist a ON wo.artist_id = a.id
+		WHere w.member_id = #{member_id}
+		ORDER BY added_date desc
+		FETCH FIRST 3 ROWS ONLY
+	</select>
+	
+	
+	<!-- index에서 찜 리스트에 저장 -->
+	<insert id="insertWorkWishList">
+		INSERT into Wishlist (id, member_id, work_id, added_date)
+		VALUES (Wishlist_seq.nextval, #{member_id}, #{work_id}, sysdate)
+	</insert>
+	 
+	 
+	<!-- wishlist에서 찜 리스트 1개 삭제 -->
+	<delete id="deleteWorkWishList">
+		delete FROM wishlist where id = #{id}  
+	</delete>
+	
+	<!-- wishlist에서 찜 리스트(체크박스) 삭제 -->
+	<delete id="deleteCheckBox">
+		  delete FROM wishlist
+		  WHERE id IN (
+		  	<foreach collection="selectedItemsList" item="selectedItem" separator=",">
+                #{selectedItem}
+            </foreach>
+		  )
+	</delete>
+	
+	<!-- wishlist에서 찜 리스트(전체) 삭제 -->
+	<delete id="deleteAll_items">
+		DELETE FROM wishlist WHERE member_id = #{member_id}
+	</delete>
+	
+	
+	
+	<!--//////////////////↓////////////↓//////// AI 관련 //////////////////↓////////////↓//////// -->
+	
+	<!-- 마이페이지 - AI 내가 생성한 그림 리스트 가져오기 -->
+	<select id="selectMyAiWorkVoList" resultType="com.java.vo.WorkVo">
+		SELECT *
+	    FROM (
+	       SELECT k.*, ROWNUM AS rnum
+	       FROM (
+	          SELECT *
+	          FROM Work w
+	          JOIN Artist a ON w.artist_id = a.id
+	          WHERE work_is_ai = 1 AND artist_korean_name = #{member_nName}
+	          ORDER BY work_reg_date DESC
+	       ) k
+	    ) 
+	    WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+
+	<!-- 1. 작품 팔린 개수 알기위해 주문상세 테이블에서 work_id마다 option_id들을 리스트에 담아 가져오기(work_id 하나에 option_id들이 여러개, 즉 work_id 하나에 optionIdList 1개 할당(map을 통해서)) -->
+	<select id="selectOrderDetail_OptionIds" resultType="int">
+	   SELECT COALESCE(od.option_id, 0) AS option_id	<!-- COALESCE(컬럼명,0): 컬럼의 값이 null이면 0을 반환  -->
+	   FROM work w
+	   LEFT JOIN order_detail od ON w.id = od.work_id	<!-- LEFT JOIN : 오른쪽(자식(서브-order_detail))테이블의 값이 null이 있든 없든 왼쪽(부모(메인-work))테이블을 기준으로 싹 다 연결해서 가져와-->
+	   WHERE w.id = #{workId}
+	   ORDER BY od.option_id DESC
+	</select>
+	
+	<!-- 2. work_id마다 있는 optionIdList가 담긴 map을 가지고, option테이블에서 option_quantity값들을 list로 가져와서 optionWorkId_QuantityMap에 저장 -->
+	<select id="selectOptionQuantity" resultType="int">
+		SELECT COALESCE(option_quantity, 0) FROM work_option WHERE id in (
+		  	<foreach collection="orderDetail_workId_OptionIdList" item="optionId" separator=",">
+                #{optionId}
+            </foreach>
+		) 
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>
