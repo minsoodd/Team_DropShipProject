@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.BoardNoticeMapper"> 
+	<!-- 공지 리스트 정렬 -->
+	<select id="selectNoticeList" resultType="com.java.vo.BoardNoticeVo">
+		SELECT * FROM (
+		SELECT rownum rnum, a.*
+		FROM (
+		SELECT n.id AS id, n.noticeboard_istop, n.admin_id AS admin_id, a.admin_login_id, a.admin_name,
+		n.noticeboard_title, n.noticeboard_content, n.noticeboard_date, n.noticeboard_update_date,
+		n.noticeboard_file_name, n.noticeboard_hit
+		FROM noticeboard n
+		JOIN admin a ON n.admin_id = a.id
+		ORDER BY n.noticeboard_istop DESC, n.noticeboard_date DESC, n.id ASC
+		) a
+		) WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- 공지 검색 -->
+	<select id="noticeBoardSearch" resultType="com.java.vo.BoardNoticeVo">
+		select * from noticeboard where 
+		<if test="search == 'all'">
+			noticeboard_title like '%'||#{searchWord}||'%' or noticeboard_content like '%'||#{searchWord}||'%'
+		</if>
+		<if test="search != 'all'">
+			${search} like '%'||#{searchWord}||'%'
+		</if>
+	</select>
+	
+	<!-- 공지 개수 확인 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) count FROM noticeboard
+	</select>
+	
+	<!-- 공지 저장 -->	
+	<insert id="insertNoticeAdd">  
+	  	INSERT INTO noticeboard VALUES (NOTICEBOARD_SEQ.nextval, #{noticeboard_istop}, 
+	  	#{admin_id}, #{noticeboard_title}, #{noticeboard_content}, sysdate, sysdate, #{noticeboard_file_name}, 0)
+  	</insert>
+	
+	<!-- 공지 1개 상세 가져오기 -->
+  	<select id="selectNoticeOne" resultType="com.java.vo.BoardNoticeVo">
+  		SELECT * FROM noticeboard WHERE id = #{id}
+	</select>
+	
+	<!-- 이전글 -->
+	<select id="preSelectNoticeOne" resultType="com.java.vo.BoardNoticeVo">
+		select * from noticeboard 
+		where id = 
+		(select prev_id from
+		(select id,noticeboard_title, lead(id,1,-1) over(ORDER BY noticeboard_istop DESC, id desc) as prev_id
+		from noticeboard) 
+		where id = #{id})
+	</select>
+	
+	<!-- 다음글 -->
+	<select id="nextSelectNoticeOne" resultType="com.java.vo.BoardNoticeVo">
+		select * from noticeboard 
+		where id = 
+		(select next_id from
+		(select id,noticeboard_title, lag(id,1,-1) over(ORDER BY noticeboard_istop DESC, id desc) as next_id
+		from noticeboard) 
+		where id = #{id})
+	</select>
+	
+	<!-- 공지 1개 가져올 때 마다 조회수 1 증가시키기 -->
+	<update id="updateNoticeboard_hit">
+		update noticeboard set noticeboard_hit = noticeboard_hit + 1 where id = #{id}
+	</update>
+	
+	<!-- 공지 1개 삭제하기 -->
+  	<delete id="deleteNoticeOne">
+  		DELETE FROM noticeboard WHERE id = #{id}
+	</delete>
+	
+	<!-- 공지 수정하기 -->
+	<update id="updateNoticeBoard">
+		UPDATE noticeboard SET noticeboard_istop = #{noticeboard_istop}, noticeboard_title = #{noticeboard_title}, 
+		noticeboard_content = #{noticeboard_content}, noticeboard_update_date = sysdate, noticeboard_file_name = #{noticeboard_file_name} WHERE id = #{id}
+	</update>
+	
+</mapper>

@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+/* ===== painting_list (그림작품) ===== */
+
+/* 비교하기버튼 */
+
+.input-compare {
+     width: 130px; /* 너비 조절 */
+     height: 45px; /* 높이 조절 */
+     border-radius: 20px; /* 모서리를 둥글게 조절 */
+     background-color: #bebebe; /* 배경색 변경 */
+     border: 1px solid #bebebe;
+     color: white; /* 글자색 변경 */
+     font-size: 18px; /* 글꼴 크기 조절 */
+     font-weight: 800; /* 글꼴을 굵게 설정 */
+}

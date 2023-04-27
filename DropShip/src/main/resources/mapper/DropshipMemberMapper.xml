@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.DropshipMemberMapper"> 
+
+	<!-- admin에서 dropship 맴버 리스트 정렬 -->
+	<select id="selectMemberList" resultType="com.java.vo.DropshipMemberVo">
+		SELECT * FROM ( SELECT rownum rnum, a. * FROM
+    	( SELECT * FROM member ORDER BY member_reg_date desc ) a )
+    	WHERE rnum BETWEEN #{startRow} AND #{endRow}
+	</select>
+	
+	<!-- admin index dropship 맴버 리스트 정렬 -->
+	<select id="indexMemberList" resultType="com.java.vo.DropshipMemberVo">
+		SELECT *
+		FROM (
+		    SELECT rownum rnum, a.*
+		    FROM (
+		        SELECT *
+		        FROM member
+		        ORDER BY member_reg_date DESC
+		    ) a
+		)
+		WHERE rnum BETWEEN #{startRow} AND #{endRow}
+		AND ROWNUM <![CDATA[<=]]> 10
+	</select>
+	
+	<!-- admin에서 dropship 맴버 개수 확인 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) count FROM member
+	</select>
+	
+	<!-- admin에서 dropship 맴버 1개 정보 가져오기 -->
+	<select id="dropship_memberselectOne" resultType="com.java.vo.DropshipMemberVo">
+		SELECT * FROM member WHERE id = #{id}
+	</select>
+	
+	<!-- index 차트 가입자 확인용 -->
+	<select id="selectMember_Reg_Date" resultType="com.java.vo.MemberCountDayVo">
+		SELECT EXTRACT(YEAR FROM MEMBER_REG_DATE) AS YEAR,
+		       EXTRACT(MONTH FROM MEMBER_REG_DATE) AS MONTH,
+		       EXTRACT(DAY FROM MEMBER_REG_DATE) AS DAY,
+		       COUNT(*) AS MEMBER_COUNT
+		FROM MEMBER
+		GROUP BY EXTRACT(YEAR FROM MEMBER_REG_DATE),
+		         EXTRACT(MONTH FROM MEMBER_REG_DATE),
+		         EXTRACT(DAY FROM MEMBER_REG_DATE)
+		ORDER BY YEAR, MONTH, DAY
+		
+	</select>
+	
+	<!-- index 차트 매출 확인용 -->
+	<select id="selectOrderTotalByMonth" resultType="com.java.vo.Count_Order_Price_By_MonthVo">
+	  SELECT TRUNC(om.ORDER_DATE) AS ORDER_DAY,
+           SUM(od.FINAL_PRICE) AS TOTAL_PRICE
+   	  FROM order_member om
+      JOIN order_detail od ON om.ID = od.ORDER_MEMBER_ID
+      GROUP BY TRUNC(om.ORDER_DATE)
+      ORDER BY TO_CHAR(TRUNC(om.ORDER_DATE), 'MONTH DD'), TRUNC(om.ORDER_DATE)
+	</select>
+	
+<!-- 	<select id="selectOrderTotalByMonth" resultType="com.java.vo.Count_Order_Price_By_MonthVo"> -->
+<!-- 	  SELECT EXTRACT(MONTH FROM om.ORDER_DATE) AS ORDER_MONTH, SUM(od.FINAL_PRICE) AS TOTAL_PRICE -->
+<!-- 	  FROM order_member om -->
+<!-- 	  JOIN order_detail od ON om.ID = od.ORDER_MEMBER_ID -->
+<!-- 	  GROUP BY EXTRACT(MONTH FROM om.ORDER_DATE) -->
+<!-- 	</select> -->
+
+
+	
+</mapper>

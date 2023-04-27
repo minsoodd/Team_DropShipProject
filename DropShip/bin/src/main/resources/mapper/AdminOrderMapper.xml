@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.java.mapper.AdminOrderMapper"> 
+
+	<!-- 	///////////////// ↓ Admin 주문 관련 ↓ /////////////////////////  -->
+
+	<!-- admin Order 리스트 정렬 -->
+	<select id="selectOrderList" resultType="com.java.vo.Order_DetailVo">
+		SELECT od.id AS id, om.id AS member_id, m.id AS Member_ID,
+		od.WORK_ID, od.OPTION_ID, od.TOTAL_PRICE, od.EVENT_WORK_SALE, od.EVENT_PERIOD_SALE, od.order_member_id,
+		(od.TOTAL_PRICE - od.EVENT_WORK_SALE - od.EVENT_PERIOD_SALE) AS FINAL_PRICE, m.member_name, w.work_name, om.order_date, om.order_status
+		FROM Order_Member om
+		JOIN Order_Detail od ON od.ORDER_MEMBER_ID = om.id
+		JOIN Member m ON om.MEMBER_ID = m.id
+		JOIN Work w ON od.work_id = w.id
+		ORDER BY om.order_status ASC, om.order_date DESC
+	</select>
+	
+	<!-- admin Order 개수 확인 -->
+	<select id="selectCount" resultType="int">
+		SELECT COUNT(*) count FROM order_detail
+	</select>
+	
+	<!-- admin Order 1개 상세 가져오기 -->
+  	<select id="adminSelectOrderOne" resultType="com.java.vo.Order_DetailVo">
+  		SELECT od.id AS id, od.order_member_id, od.final_price, d.id as delivery_id,
+  		m.member_name, om.order_date, om.order_status, om.member_id, om.delivery_name, om.delivery_road, om.delivery_address, om.delivery_phone, w.work_name
+		FROM Order_Detail od
+		JOIN Order_Member om ON od.order_member_id = om.id
+		Join Work w ON w.id = od.work_id 
+		JOIN Member m ON om.member_id = m.id
+		JOIN Delivery d ON om.delivery_id = d.id
+		WHERE od.id = #{id}
+	</select>
+	
+	<!-- admin 고객 관리에서 Order 가져오기 -->
+  	<select id="adminMemberSelectOrder" resultType="com.java.vo.Order_DetailVo">
+  		SELECT om.id, om.member_id, om.order_date, om.order_status, om.delivery_name, om.delivery_road, d.id as delivery_id, od.order_member_id,
+		od.id AS order_detail_id, od.work_id, od.option_id, od.total_price, od.event_work_sale, od.event_period_sale, od.final_price
+		FROM Order_Member om
+		JOIN Order_Detail od ON om.id = od.order_member_id
+		JOIN Delivery d ON om.delivery_id = d.id
+		WHERE member_id = #{id}
+		ORDER BY om.order_status asc, om.order_date DESC
+	</select>
+	
+	
+	<!-- admin Order 주문 처리 상태 수정하기 -->
+	<update id="updateOrderStatus" >
+	    UPDATE Order_Member SET order_status = #{orderStatus} WHERE id = #{id}
+	</update>
+	
+	<!-- admin Order 전체 불러오기 -->
+	<select id="selectOrderAll" resultType="com.java.vo.Order_MemberVo">	
+	    	SELECT om.*
+			FROM Order_Member om
+			JOIN Order_Detail od ON om.id = od.order_member_id
+	  </select>
+	
+</mapper>

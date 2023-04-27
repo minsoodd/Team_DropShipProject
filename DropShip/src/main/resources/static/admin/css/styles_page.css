@@ -1,0 +1,59 @@
+@charset "UTF-8";
+/*!
+* Start Bootstrap - SB Admin v7.0.5 (https://startbootstrap.com/template/sb-admin)
+* Copyright 2013-2022 Start Bootstrap
+* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin/blob/master/LICENSE)
+*/
+/*!
+ * Bootstrap v5.1.3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+.bottom-paging{
+	margin-top: 15px;
+	width: 100%;
+}
+
+.page-numul{
+	display: flex;
+  	justify-content: center;
+  	margin: 0 auto;
+}
+
+.page-num {
+  width: 30px;
+  height: 30px !important;
+  margin-left: 13px;
+  margin-right: 13px;
+  margin-bottom: 5px;
+  border: 1px #989898 solid;
+}
+
+.material-symbols-outlined{
+  padding-top: 2px;	
+}
+
+.page-num a{
+	text-decoration: none;
+}
+
+#page-on { 
+  background:#e56e00; 
+  color:#fff; 
+}
+
+#page-number { 
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-numul li{
+  margin-top: 5px;	
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 13px;
+}
