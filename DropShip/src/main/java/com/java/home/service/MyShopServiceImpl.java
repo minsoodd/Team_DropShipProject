@@ -17,6 +17,7 @@ import com.java.vo.Order_DetailVo;
 import com.java.vo.Order_Detail_inquireVo;
 import com.java.vo.Order_MemberVo;
 import com.java.vo.WishListVo;
+import com.java.vo.WorkReViewVo;
 import com.java.vo.WorkVo;
 
 @Service
@@ -92,10 +93,9 @@ public class MyShopServiceImpl implements MyShopService{
 	
 	// 마이페이지 - 리뷰 별점(review_rate) 따로 가져오려고.
 	@Override
-	public List<Integer> selectReviewRateAll(int member_id) {
-		List<Integer> review_rate_list = new ArrayList<>();
-		review_rate_list = myshopMapper.selectReviewRateAll(member_id);
-		return review_rate_list;
+	public List<WorkReViewVo> selectReviewAll(int member_id) {
+		List<WorkReViewVo> workReViewVoList = myshopMapper.selectReviewAll(member_id);
+		return workReViewVoList;
 	}
 	
 	
@@ -360,6 +360,8 @@ public class MyShopServiceImpl implements MyShopService{
 		
 		return myAiWorkListPageMap;
 	}
+
+	
 
 	
 

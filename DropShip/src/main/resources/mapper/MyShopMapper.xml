@@ -59,7 +59,7 @@
 	 <!-- 회원 마이페이지주문조회 (날짜 검색도) , (작품id, 리뷰별점) -->
 	 <select id="selectOrderDetailByMemberId" resultType="com.java.vo.Order_Detail_inquireVo">	
 	    SELECT om.order_date, MAX(od.order_member_id) as order_member_id, w.work_img_url, w.work_name, a.artist_korean_name, 
-			   wo.option_quantity, wo.option_selected_price, om.order_status, w.id as work_id
+			   wo.option_quantity, wo.option_selected_price, om.order_status, w.id as work_id, wo.id as option_id
 			FROM order_detail od
 			JOIN order_member om ON od.order_member_id = om.id
 			JOIN work w ON od.work_id = w.id
@@ -84,7 +84,7 @@
 			AND om.order_date <![CDATA[<=]]> TO_DATE(#{to_date})+1	<!-- 종료일 이전까지 -->
 	 	</if>
 		GROUP BY om.order_date, w.work_img_url, w.work_name, a.artist_korean_name, 
-	     		wo.option_quantity, wo.option_selected_price, om.order_status, w.id
+	     		wo.option_quantity, wo.option_selected_price, om.order_status, w.id, wo.id
 		ORDER BY om.order_date DESC
 	 </select>
 <!-- 	 <select id="selectOrderDetailByMemberId" resultType="com.java.vo.Order_Detail_inquireVo">	 -->
@@ -117,8 +117,9 @@
 <!-- 	 </select> -->
 	  
 	  <!-- 마이페이지 - 리뷰 별점(review_rate) 따로 가져오려고. -->
-	  <select id="selectReviewRateAll" resultType="Integer">	
-	    	SELECT review_rate FROM work_review WHERE member_id = #{member_id} ORDER BY order_member_id DESC
+	  <select id="selectReviewAll" resultType="com.java.vo.WorkReViewVo">	
+	    	SELECT * FROM work_review 
+	    	WHERE member_id = #{member_id} ORDER BY order_member_id DESC
 	  </select>
 	  
 	  <!-- 회원 주문 객체 가져오기(주문 결과 띄우기용) -->

@@ -9,6 +9,7 @@ import com.java.vo.OptionVo;
 import com.java.vo.Order_Detail_inquireVo;
 import com.java.vo.Order_MemberVo;
 import com.java.vo.WishListVo;
+import com.java.vo.WorkReViewVo;
 
 @Service
 public interface MyShopService {
@@ -34,7 +35,7 @@ public interface MyShopService {
 	List<Order_MemberVo> selectOrderMemberAll(int member_id);
 	
 	// 마이페이지 리뷰 따로 가져오기
-	List<Integer> selectReviewRateAll(int member_id);
+	List<WorkReViewVo> selectReviewAll(int member_id);
 	
 	
 	///////////----------↓--------↓------ 주문조회, 주문목록/배송조회 (GetMapping("orderinquiry")) -------------↓--------↓---------//////////
@@ -89,6 +90,9 @@ public interface MyShopService {
 
 	// 장바구니 담긴 개수 가져오는 메소드
 	int getCartCount(int member_id);
+
+
+	
 
 	
 

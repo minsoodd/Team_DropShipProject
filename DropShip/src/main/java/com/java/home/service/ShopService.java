@@ -78,13 +78,15 @@ public interface ShopService {
 	
 	void insertWorkReviewOne(WorkReViewVo workReViewVo);  // 작품 리뷰1개 저장
 	
-	List<Integer> selectMemberWorkReviewCheck(int member_id, List<Integer> work_idList, List<Integer> order_memberIdList);  // 작품 리뷰있는지 확인
+	List<Integer> selectMemberWorkReviewCheck(int member_id, List<Integer> work_idList, List<Integer> order_memberIdList, List<Integer> option_idList);  // 작품 리뷰있는지 확인
 	
-	WorkReViewVo selectMemberWorkReViewOne(int member_id, int work_id, int order_member_id);  // member 1명의 작품리뷰1개 가져오기 
+	WorkReViewVo selectMemberWorkReViewOne(WorkReViewVo workReViewVo); // member 1명의 작품리뷰1개 가져오기 
 	
 	void updateMemberWorkReViewOne(WorkReViewVo workReViewVo);  // member 1명의 작품리뷰1개 수정하기
 	
 	void deleteMemberWorkReViewOne(int member_id, int work_id, int order_member_id);  // member 1명의 작품리뷰1개 삭제하기
+
+	
 	
 
 	

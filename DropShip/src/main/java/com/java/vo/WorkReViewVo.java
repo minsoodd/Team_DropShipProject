@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class WorkReViewVo {
 	
-	private int id, work_id, member_id;
+	private int id, work_id, member_id, option_id;
 	private Date review_date;
 	private int review_rate;
 	private String review_title, review_content;

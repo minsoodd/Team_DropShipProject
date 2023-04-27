@@ -22,23 +22,6 @@
     <link rel="stylesheet" href="../home/theme/buzinga/mobile/skin/qa/basic/style3816.css?ver=210618">
     <link rel="stylesheet" href="../home/theme/buzinga/css/common3816.css?ver=210618">
     <link rel="stylesheet" href="../home/theme/buzinga/css/sub3816.css?ver=210618">
-    <!--[if lte IE 8]>
-<script src="https://bxgs.co.kr/js/html5.js"></script>
-<![endif]-->
-    <script>
-        // 자바스크립트에서 사용하는 전역변수 선언
-        var g5_url = "https://bxgs.co.kr";
-        var g5_bbs_url = "https://bxgs.co.kr/bbs";
-        var g5_is_member = "1";
-        var g5_is_admin = "";
-        var g5_is_mobile = "1";
-        var g5_bo_table = "";
-        var g5_sca = "";
-        var g5_editor = "";
-        var g5_cookie_domain = "";
-        var g5_theme_shop_url = "https://bxgs.co.kr/theme/buzinga/shop";
-        var g5_shop_url = "https://bxgs.co.kr/shop";
-    </script>
     <link rel="stylesheet" href="../../use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="../home/js/jquery-1.12.4.min3816.js?ver=210618"></script>
     <script src="../home/js/jquery-migrate-1.4.1.min3816.js?ver=210618"></script>
@@ -94,6 +77,7 @@
     					<input type="hidden" name="work_id" value="${param.work_id}">
                         <input type="hidden" name="member_id" value="${param.member_id}">
                         <input type="hidden" name="order_member_id" value="${param.order_member_id}">
+                        <input type="hidden" name="option_id" value="${param.option_id}">
 						
                         <div class="form-box-wrap">
 

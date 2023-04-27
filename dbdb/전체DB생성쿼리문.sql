@@ -729,3 +729,15 @@ ALTER TABLE Work_Review
 ADD CONSTRAINT FK_Review_order_member_id_Order_Member_id
 FOREIGN KEY (order_member_id)
 REFERENCES Order_Member (id);
+
+-- 장바구니에 같은 작품 다른옵션으로 여러개 주문했을 때 option_id로 구분해서 리뷰 작성할 수 있게 
+-- work_review 테이블에 option_id 컬럼 추가
+ALTER TABLE Work_Review 
+ADD option_id number(4) null;
+
+ALTER TABLE Work_Review
+ADD CONSTRAINT FK_Work_Review_option_id_Work_Option_id
+FOREIGN KEY (option_id)
+REFERENCES Work_Option (id);
+
+

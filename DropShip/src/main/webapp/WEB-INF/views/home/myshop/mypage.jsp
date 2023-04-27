@@ -24,23 +24,6 @@
     <link rel="stylesheet" href="../home/theme/buzinga/js/owl.carousel3816.css?ver=210618">
     <link rel="stylesheet" href="../home/theme/buzinga/css/common3816.css?ver=210618">
     <link rel="stylesheet" href="../home/theme/buzinga/css/sub3816.css?ver=210618">
-    <!--[if lte IE 8]>
-<script src="https://bxgs.co.kr/js/html5.js"></script>
-<![endif]-->
-<script>
-// 자바스크립트에서 사용하는 전역변수 선언
-var g5_url = "https://bxgs.co.kr";
-var g5_bbs_url = "https://bxgs.co.kr/bbs";
-var g5_is_member = "1";
-var g5_is_admin = "";
-var g5_is_mobile = "1";
-var g5_bo_table = "";
-var g5_sca = "";
-var g5_editor = "";
-var g5_cookie_domain = "";
-var g5_theme_shop_url = "https://bxgs.co.kr/theme/buzinga/shop";
-var g5_shop_url = "https://bxgs.co.kr/shop";
-</script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="../home/js/jquery-1.12.4.min3816.js?ver=210618"></script>
     <script src="../home/js/jquery-migrate-1.4.1.min3816.js?ver=210618"></script>
@@ -163,7 +146,6 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                             <c:forEach items="${order_detail_list}" var="order_detail_inquireVo" varStatus="loop">
                                                 <tr>
                                                     <c:if test="${loop.first || order_detail_inquireVo.order_member_id ne prevOrderMemberId}">
-                                                        <!-- 이거 왜 이렇게하는지 1도 모르겠음. GPT쩐다 ㅋㅋㅋ -->
                                                         <td data-title="주문번호" class="td-num" rowspan="${orderMemberIdCountMap[order_detail_inquireVo.order_member_id]}">
                                                             <div>
                                                                 <fmt:formatDate value="${order_detail_inquireVo.order_date}" pattern="yyyy-MM-dd (E)  HH시 mm분" />
@@ -178,8 +160,6 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                             </div>
                                                             <div class="product-name">
                                                                 <strong>${order_detail_inquireVo.work_name}<span>${order_detail_inquireVo.artist_korean_name}</span></strong>
-                                                                <!-- 		                                                        <p>외 1건</p> -->
-                                                                <!-- <p>캔버스 / 캔버스판넬 / 마띠에르 리터치 선택 / 매트없음 / 90.0cm X 71.4cm</p> -->
                                                             </div>
                                                         </div>
                                                     </td>
@@ -212,7 +192,7 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                         	<c:if test="${workReviewVoCountList.get(loop.index) == 0 }"> 
 							                                	<div><br>
 							                                        <button type="button" class="btnset btn-type01 btn_cart sct_cart" data-it_id="1654133549">
-							                                            <a href="../shop/work_review_write?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}" class="btnset btn-sight">
+							                                            <a href="../shop/work_review_write?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}&option_id=${order_detail_inquireVo.option_id}" class="btnset btn-sight">
 							                                                <svg height="45" width="140">
 							                                                    <rect height="45" width="140"></rect>
 							                                                </svg>
@@ -226,7 +206,7 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
                                                         	<c:if test="${workReviewVoCountList.get(loop.index) == 1}">
                                                         		<div><br>
 							                                        <button type="button" class="btnset btn-type01 btn_cart sct_cart" data-it_id="1654133549">
-							                                            <a href="../shop/work_review_update?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}" class="btnset btn-sight">
+							                                            <a href="../shop/work_review_update?member_id=${sessionMember_id}&work_id=${order_detail_inquireVo.work_id}&order_member_id=${order_detail_inquireVo.order_member_id}&option_id=${order_detail_inquireVo.option_id}" class="btnset btn-sight">
 							                                                <svg height="45" width="140">
 							                                                    <rect height="45" width="140"></rect>
 							                                                </svg>
@@ -236,21 +216,25 @@ var g5_shop_url = "https://bxgs.co.kr/shop";
 							                                        </button>
 							                                    </div><br>
 							                                    <div>
-							                                    	<c:if test="${review_rate_list.get(loop.index) == 1}">
-								                                    	<img src="../../home/img/s_star1_big.png">
-							                                    	</c:if>
-							                                    	<c:if test="${review_rate_list.get(loop.index) == 2}">
-								                                    	<img src="../../home/img/s_star2_big.png">
-							                                    	</c:if>
-							                                    	<c:if test="${review_rate_list.get(loop.index) == 3}">
-								                                    	<img src="../../home/img/s_star3_big.png">
-							                                    	</c:if>
-							                                    	<c:if test="${review_rate_list.get(loop.index) == 4}">
-								                                    	<img src="../../home/img/s_star4_big.png">
-							                                    	</c:if>
-							                                    	<c:if test="${review_rate_list.get(loop.index) == 5}">
-								                                    	<img src="../../home/img/s_star5_big.png">
-							                                    	</c:if>
+							                                    	<c:forEach items="${workReViewVoList}" var="workReViewVo">
+																	    <c:if test="${workReViewVo.order_member_id == order_detail_inquireVo.order_member_id && workReViewVo.option_id == order_detail_inquireVo.option_id}">
+																	        <c:if test="${workReViewVo.review_rate == 1}">
+																	            <img src="../../home/img/s_star1_big.png">
+																	        </c:if>
+																	        <c:if test="${workReViewVo.review_rate == 2}">
+																	            <img src="../../home/img/s_star2_big.png">
+																	        </c:if>
+																	        <c:if test="${workReViewVo.review_rate == 3}">
+																	            <img src="../../home/img/s_star3_big.png">
+																	        </c:if>
+																	        <c:if test="${workReViewVo.review_rate == 4}">
+																	            <img src="../../home/img/s_star4_big.png">
+																	        </c:if>
+																	        <c:if test="${workReViewVo.review_rate == 5}">
+																	            <img src="../../home/img/s_star5_big.png">
+																	        </c:if>
+																	    </c:if>
+																	</c:forEach>
 							                                    </div>
                                                         	</c:if>
 						                                </c:if> 

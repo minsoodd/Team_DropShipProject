@@ -391,36 +391,37 @@
 	</select>
 	
     <!-- 작품 리뷰있는지 확인 -->
-<!-- 	<select id="selectMemberWorkReviewCheck" resultType="int"> -->
-<!-- 	  	select count(*) count from work_review where member_id=#{member_id} and work_id = #{work_id} and -->
-<!-- 	</select> -->
 	<select id="selectMemberWorkReviewCheck" resultType="int">
-	  	SELECT COUNT(*) count FROM work_review WHERE member_id=#{member_id} AND work_id = #{work_id} AND order_member_id = #{order_member_id}
+	  	SELECT COUNT(*) count FROM work_review WHERE member_id=#{member_id} 
+	  	AND work_id = #{work_id} AND order_member_id = #{order_member_id}
+	  	AND option_id = #{option_id}
 	</select>
      
 	<!-- member 1명의 작품리뷰1개 가져오기 -->
 	<select id="selectMemberWorkReViewOne" resultType="com.java.vo.WorkReViewVo">
-		SELECT * FROM work_review WHERE member_id = #{member_id} and work_id = #{work_id} AND order_member_id = #{order_member_id}
+		SELECT * FROM work_review WHERE member_id = #{member_id} AND work_id = #{work_id} 
+		AND order_member_id = #{order_member_id} AND option_id = #{option_id}   
 	</select>
 	
 	<!-- 작품 리뷰 1개 저장 -->
 	<insert id="insertWorkReviewOne">
 		INSERT INTO work_review VALUES (
 			work_review_seq.nextval, #{work_id}, #{member_id}, sysdate,
-			#{review_rate}, #{review_title}, #{review_content}, #{order_member_id}
+			#{review_rate}, #{review_title}, #{review_content}, #{order_member_id}, #{option_id}
 		)
 	</insert>
 	
 	<!-- 작품 리뷰 1개 수정 -->
 	<update id="updateMemberWorkReViewOne">
 		UPDATE work_review SET review_rate = #{review_rate}, review_title = #{review_title}, review_content = #{review_content}
-		WHERE member_id = #{member_id} AND work_id = #{work_id} AND order_member_id = #{order_member_id}  
-		
+		WHERE member_id = #{member_id} AND work_id = #{work_id} AND order_member_id = #{order_member_id} 
+		AND option_id = #{option_id}   
 	</update>
 	
 	<!-- 작품 리뷰 1개 삭제 -->
 	<delete id="deleteMemberWorkReViewOne">
 		DELETE FROM work_review WHERE member_id = #{member_id} AND work_id = #{work_id} AND order_member_id = #{order_member_id}
+		AND option_id = #{option_id}   
 	</delete>
 			
 </mapper>

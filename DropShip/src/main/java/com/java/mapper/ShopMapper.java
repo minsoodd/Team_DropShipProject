@@ -115,15 +115,16 @@ public interface ShopMapper {
 	
 	void insertWorkReviewOne(WorkReViewVo workReViewVo);  // 작품 리뷰1개 저장
 	
-//	Integer selectMemberWorkReviewCheck(int member_id, int work_id); // 작품 리뷰있는지 확인
-	Integer selectMemberWorkReviewCheck(int member_id, Integer work_id, Integer order_member_id);
+	Integer selectMemberWorkReviewCheck(int member_id, Integer work_id, Integer order_member_id, Integer option_id); // 작품 리뷰있는지 확인
 	
 	
-	WorkReViewVo selectMemberWorkReViewOne(int member_id, int work_id, int order_member_id); // member 1명의 작품리뷰1개 가져오기
+	WorkReViewVo selectMemberWorkReViewOne(WorkReViewVo workReViewVo); // member 1명의 작품리뷰1개 가져오기
 	
 	void updateMemberWorkReViewOne(WorkReViewVo workReViewVo);  // member 1명의 작품리뷰1개 수정하기
 	
 	void deleteMemberWorkReViewOne(int member_id, int work_id, int order_member_id);  // member 1명의 작품리뷰1개 삭제하기
+
+	
 
 	
 

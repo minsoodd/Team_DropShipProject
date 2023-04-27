@@ -120,16 +120,15 @@ public class ShopController {
 	}
 	
 	@GetMapping("work_review_update")  // 작품리뷰 수정
-	public String work_review_update(int member_id, int work_id, int order_member_id, Model model ) {
-		workReViewVo = shopservice.selectMemberWorkReViewOne(member_id, work_id, order_member_id); // member 1명의 작품리뷰1개 가져오기
-		System.out.println("DB들렸다온 workReViewVo 수정 : "+workReViewVo);
+	public String work_review_updateGet(WorkReViewVo workReViewVo, Model model ) {
+		workReViewVo = shopservice.selectMemberWorkReViewOne(workReViewVo); // member 1명의 작품리뷰1개 가져오기
 		model.addAttribute("workReViewVo",workReViewVo);
 		
 		return "home/shop/work_review_update";
 	}
 	
 	@PostMapping("work_review_update")  // 작품리뷰 수정 실행
-	public String work_review_update( WorkReViewVo workReViewVo, Model model) {
+	public String work_review_updatePost( WorkReViewVo workReViewVo, Model model) {
 		int WorkReViewUpdateResult = 0;
 		shopservice.updateMemberWorkReViewOne(workReViewVo);
 		model.addAttribute("workReViewVo",workReViewVo);
