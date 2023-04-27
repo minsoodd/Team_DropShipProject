@@ -1,0 +1,72 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="PRINT_ORDER_DETAIL" directorySegmentName="seg_0" id="DB759CF8-0D5E-A0BD-98C8-591E86896EC0">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D9C5A2D3-BB53-B174-6969-D2727B7DC4D4</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="OPTION_ID" id="148FF320-1F65-6585-54E9-5B4A2D082DFD">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FINAL_PRICE" id="481812B3-E495-CEDF-A47A-2D9922348A4A">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="8129391E-3E7B-45A1-0E95-64D23E406D15">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WORK_ID" id="BB525184-4D4A-1DD6-096D-59189B348F70">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="PRINT_ORDER_ID" id="D69B76BC-8991-AC5E-D08D-E64C6FD99542">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PRINT_ORDER_DETAIL_WORK_ID_PRINT_WORK_ID" id="27CC993A-B85C-35EF-DD65-954D35411D1A">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PRINT_ORDER_DETAIL_OPTION_ID_WORK_OPTION_ID" id="6745A15A-45FE-B6F5-E99D-C8551088177C">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_PRINT_ORDER_DETAIL_PRINT_ORDER_ID_PRINT_ORDER_ID" id="7722B9B8-6DCF-A6BD-2CB6-EC84F192A04D">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="PRINT_ORDER_DETAIL_PK" id="33AD680A-D241-F0F7-1AC6-EE843A28C93D">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<segment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<indexSegment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

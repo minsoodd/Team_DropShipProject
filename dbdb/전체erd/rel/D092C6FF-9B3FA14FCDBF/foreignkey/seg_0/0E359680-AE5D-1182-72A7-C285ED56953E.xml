@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="0E359680-AE5D-1182-72A7-C285ED56953E" containerWithKeyObject="A6FA85F0-81FE-AF47-DA80-BF28D1111AD8" localFKIndex="ADAD3606-CA53-4CB4-6DAF-5F73F929E1AF" name="FK_NOTICEBOARD_MEMBER_ID_ADMIN_ID">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>FK_NOTICEBOARD_MEMBER_ID_ADMIN_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<referredTableLongName>DROPUSER2.ADMIN</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A0C6CBF6-07B1-417B-0F07-F24086B68AA0</referredTableID>
+<keyObject>DF76FFC3-4E23-8FAA-0E76-7516B280504F</keyObject>
+<referredKeyID>DF76FFC3-4E23-8FAA-0E76-7516B280504F</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

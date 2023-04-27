@@ -1,0 +1,206 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="E686E427-80A8-DEB4-91FB-71F3E9A1D607" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ANONYMOUS_WORK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="FEE70E6F-04F2-ADD6-D971-9223396D44C1">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_NAME" id="AFE9787A-FD36-4123-26F5-7DFDCA533F3C">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_NAME</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_GENRE" id="67856308-B77B-A69A-5C51-EA17C92F7C86">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_GENRE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_SUBJECT" id="BD21A660-228D-3E62-97D9-AC100B276AFD">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_SUBJECT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_IMG_URL" id="C6AC96E9-0FF3-FB28-21A5-57ECF37884D5">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_IMG_URL</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_CONTENT" id="C269A28F-1742-9F7F-A9D2-DF010D944970">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_CONTENT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_SALE" id="7B87BB85-91DF-1CF1-208C-5AE3CA0D529E">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_SALE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>2</dataTypeScale>
+<defaultValue>0.00</defaultValue>
+<ownDataTypeParameters>,4,2</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_REG_DATE" id="B0B7674E-0E17-A1D6-266C-89B7EB02ADCB">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_REG_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_PRICE" id="F7089EE6-4323-6E81-45F0-81CC0402066E">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_PRICE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>9</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,9,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_DISPLAY_POSITION" id="4A51E90B-E061-7F63-FE25-08CF134BA5D2">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_DISPLAY_POSITION</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>500 BYTE</dataTypeSize>
+<ownDataTypeParameters>500 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_HIT" id="E5EF54D2-D00C-6B7C-B693-D747F2FA3B21">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_HIT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ANONYMOUS_WORK_AVAILABLE" id="2E40E5E0-88E3-67A8-A282-227902C71BE6">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ANONYMOUS_WORK</sourceObjSchema>
+<sourceObjName>ANONYMOUS_WORK_AVAILABLE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,1,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="1B254E92-4210-18C0-02DD-761AF6E164DD" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ANONYMOUS_WORK_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012042</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="FEE70E6F-04F2-ADD6-D971-9223396D44C1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

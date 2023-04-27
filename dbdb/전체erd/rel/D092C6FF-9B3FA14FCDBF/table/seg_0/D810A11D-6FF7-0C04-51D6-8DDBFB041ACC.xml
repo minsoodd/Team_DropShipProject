@@ -1,0 +1,219 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D810A11D-6FF7-0C04-51D6-8DDBFB041ACC" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ORDER_NONMEMBER">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>ORDER_NONMEMBER</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B729D42C-F648-BC05-203E-F80C0A44C3B8">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NONMEMBER_ID" id="8D71A4C0-7681-218A-DCE5-3860ED41EAF9">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>NONMEMBER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77FEB7AE-92FF-004C-7B11-46A73EAED318" referredColumn="C98E47CD-C893-CEC2-4BE6-5993F2410B65"/>
+</associations>
+</Column>
+<Column name="ORDER_DATE" id="79669CAD-90A9-6FBD-4ACA-20A2F422AF1F">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>ORDER_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="ORDER_STATUS" id="E05A21E6-9041-7695-4DC7-3CD21AE32E37">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>ORDER_STATUS</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,1,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_ID" id="2F3BB8C4-821A-A1D5-792D-96E9E93C0B63">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>null</defaultValue>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="34CFF822-A10D-8EC8-0DD1-DB2F13052AF0" referredColumn="9E8A4BDE-5579-D86B-ECC7-6E59856A6BBC"/>
+</associations>
+</Column>
+<Column name="DELIVERY_NAME" id="91B005A5-57BD-EEE3-C81B-90A648D2D54B">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_NAME</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 BYTE</dataTypeSize>
+<ownDataTypeParameters>50 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_PHONE" id="29E4A8AD-30F1-3F16-F749-574B59FFB79A">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_PHONE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 BYTE</dataTypeSize>
+<ownDataTypeParameters>30 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_ZIP" id="6473F60A-C2D7-AFBF-8133-6B4FDDF30EB1">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_ZIP</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>6 BYTE</dataTypeSize>
+<ownDataTypeParameters>6 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_ROAD" id="9461FF1B-01A3-21FE-00AA-AA05230CE3F4">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_ROAD</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_ADDRESS" id="D60D41B5-E721-9F80-4CB3-894A5076F0DC">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_ADDRESS</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="DELIVERY_REQUEST" id="DAA2308B-AA90-1A86-080A-93D22801148B">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_NONMEMBER</sourceObjSchema>
+<sourceObjName>DELIVERY_REQUEST</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="050594B5-A455-7D9E-9AC9-F9A66324B3D8" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ORDER_NONMEMBER_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012028</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B729D42C-F648-BC05-203E-F80C0A44C3B8"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="CFD9F941-8502-65DB-E5E7-AACADEB6FD82" name="FK_ORDER_NONMEMBER_DELIVERY_ID_DELIVERY_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2F3BB8C4-821A-A1D5-792D-96E9E93C0B63"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D203C49C-4076-CA9E-353E-3B67862D5FDC" name="FK_ORDER_NONMEMBER_NONMEMBER_ID_NON_MEMBER_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8D71A4C0-7681-218A-DCE5-3860ED41EAF9"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="EVENTBOARD" directorySegmentName="seg_0" id="F1107FA5-B5F9-7BF9-BC86-5B058473FEA4">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D9C5A2D3-BB53-B174-6969-D2727B7DC4D4</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="EVENTBOARD_UPDATE_DATE" id="306BD8D6-407C-E0C9-9668-013FD95DD1BA">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_ISTOP" id="3BFC06B4-2822-CB29-6C77-1A61AE2279A7">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_FILE_NAME" id="3D65B6D6-69B9-09A4-C30A-E4B8EF048E11">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>null</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ID" id="601D249D-5F2D-6B4E-A97E-60D8B6B1E349">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_CONTENT" id="7E826CB9-19D6-FF7C-1203-6D513FE60BBF">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_DATE" id="B17FA534-3BA1-1BF1-8C59-ABD9926F6030">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_HIT" id="C215E9C6-B770-7341-A5C2-FBD8B184E862">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="EVENTBOARD_TITLE" id="D96D6303-4D71-2CD2-E525-09370772EE18">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="MEMBER_ID" id="FBEB9898-4C90-4862-44B9-5EAC87C7E51E">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_EVENTBOARD_MEMBER_ID_ADMIN_ID" id="A271221B-715A-7857-12C2-C7EEC3597E6F">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="EVENTBOARD_PK" id="569EC20F-8BFC-4923-5EDA-758442AD9A53">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<segment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<indexSegment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

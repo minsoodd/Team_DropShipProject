@@ -1,0 +1,111 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="FREEBOARD" directorySegmentName="seg_0" id="AF0B9F5E-E11E-ED8D-AFA8-55674E000138">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D9C5A2D3-BB53-B174-6969-D2727B7DC4D4</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="ID" id="02732BC6-58A8-E46F-BC7C-61088F3A4E79">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_ISANSWER" id="036954FC-B43D-98FB-9FFF-ECA0348EF543">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>null</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_HIT" id="23BF9567-65A6-51AA-B7DA-2891622EB30C">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_CONTENT" id="2610DABE-2E0A-51AF-C71B-357A7484A968">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_HEAD" id="5AC0043D-1434-F334-4AE2-2BD60AF4FDE6">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_TITLE" id="6604111B-62FB-7354-C93D-97A7FB02CC34">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_ISNOTICE" id="75E6C831-3A6A-2CFB-4975-0736E7E2D123">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_UPDATE_DATE" id="7D87E4EF-1145-AFEB-5E31-E14E6FCF94B1">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>sysdate</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_FILE_NAME" id="9919AF84-42D6-14E9-9139-E42B923B7D0C">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>null</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="MEMBER_ID" id="9B78D1BA-84DF-15E8-4F11-38D9CEF05DD4">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ADMIN_ID" id="BE40B31A-26F2-2E93-2ABA-0BD78B1F2DFA">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>null</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_ISTOP" id="BF97EA04-25E4-3B1A-EE21-329B4030DBC7">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="FREEBOARD_DATE" id="E8C7C471-6F3E-2768-B191-8E9C9F3778BD">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>sysdate</defaultValue>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_FREEBOARD_MEMBER_ID_MEMBER_ID" id="44B66B9F-61D3-BD66-6376-508A396081FD">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="FREEBOARD_PK" id="6022E93C-EE83-EEC0-D89F-5ED291E89980">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<segment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<indexSegment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

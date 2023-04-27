@@ -1,0 +1,127 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="WORK" directorySegmentName="seg_0" id="372105B6-BFD0-9992-6BFF-4B70D19F2533">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D9C5A2D3-BB53-B174-6969-D2727B7DC4D4</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="WORK_HIT" id="03177492-DB16-454F-B322-070FAAF02CBD">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ADMIN_ID" id="0DFAE905-FE20-B32E-EF50-0E1513E8E702">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>1</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_DISPLAY_POSITION" id="0F859C15-0BC0-23D9-4AB9-EC6C2466CE06">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>&apos;https://www.google.com/maps?cid=13363865620386383060&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_CONTENT" id="16616995-E475-16BF-A0C7-FF09D32981FD">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="278255AE-7D0F-D083-CD52-7DE9CEF82E66">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WORK_GENRE" id="53DA4075-BBEE-623D-FB63-28C163A33CE4">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>&apos;초상화&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_AVAILABLE" id="55D57BFB-7ADB-5F8D-1EDE-27E5CBE00944">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>1</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="ARTIST_ID" id="60255B12-7C1E-7A76-7393-F40C73945259">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WORK_SUBJECT" id="610BD553-28F1-81E3-9B48-4642B3B1494B">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>&apos;봄&apos;</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_REG_DATE" id="6F7C722E-AFA4-F727-6821-62E4D02039A3">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>sysdate</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_SALE" id="9ADF6560-98BA-697F-7F51-C59243D47A18">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0.00</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_NAME" id="A421F85E-0CC4-42DC-3BFF-592B72307D02">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="WORK_PRICE" id="E7BDD3A2-413B-D3C8-F5C3-4AE9CE366186">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>10000</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_ISBEST" id="F8ADEBDC-2680-FE5B-7E1C-C34DB536C0B7">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<defaultValue>0</defaultValue>
+</ColumnProxy>
+<ColumnProxy name="WORK_IMG_URL" id="FF81FBBC-A9D4-7313-B11C-56F0C9F23897">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_WORK_ADMIN_ID_ADMIN_ID" id="6791EF6A-D5BB-94C0-0E19-BABD287B19FA">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="FK_WORK_ARTIST_ID_ARTIST_ID" id="B746790D-490E-CE52-5508-49E87CFF7D3D">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="WORK_PK" id="E941A021-644F-ECA4-89C7-E97D16B43992">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<segment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<indexSegment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

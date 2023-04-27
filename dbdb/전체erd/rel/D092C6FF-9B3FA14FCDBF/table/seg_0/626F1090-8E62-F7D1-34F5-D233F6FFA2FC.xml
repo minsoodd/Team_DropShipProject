@@ -1,0 +1,190 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="626F1090-8E62-F7D1-34F5-D233F6FFA2FC" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ORDER_DETAIL_NONMEMBER">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>ORDER_DETAIL_NONMEMBER</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="B0F56448-0546-DF8C-38D9-68DF5C9A0339">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NONMEMBER_ORDER_ID" id="EA7EFE1A-2E86-3627-ABBC-19B32F2D6339">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>NONMEMBER_ORDER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="85E7221A-11C3-BC76-5882-AE5C77ED0261" referredColumn="B729D42C-F648-BC05-203E-F80C0A44C3B8"/>
+</associations>
+</Column>
+<Column name="WORK_ID" id="6FCF76FF-C1C2-ACDA-9D46-CC36F1BF6609">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>WORK_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="77B5A99A-3EF8-3455-239B-B9CF101A57D5" referredColumn="278255AE-7D0F-D083-CD52-7DE9CEF82E66"/>
+</associations>
+</Column>
+<Column name="OPTION_ID" id="44582C48-2AE4-0024-A0DE-B5E3B4DCD4F3">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>OPTION_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="F5CB662D-7235-35E0-3BE5-86AE509F3B00" referredColumn="DF7083FD-F13C-35DB-5251-B5CA17985A51"/>
+</associations>
+</Column>
+<Column name="TOTAL_PRICE" id="2532242F-2E4D-7D26-12D3-462AE8D49840">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>TOTAL_PRICE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,7,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EVENT_WORK_SALE" id="422E35C1-B7B0-24B9-A2D0-BFB282447F84">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>EVENT_WORK_SALE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="EVENT_PERIOD_SALE" id="9E9ED3D5-04DE-16F4-244E-8C6C8713B94C">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>EVENT_PERIOD_SALE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>3</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,3,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FINAL_PRICE" id="FCD2FA24-F5D8-C468-4156-F9D5E90D72FF">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>ORDER_DETAIL_NONMEMBER</sourceObjSchema>
+<sourceObjName>FINAL_PRICE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>7</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,7,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="4D327921-2B79-D186-2CB2-44F79EFF909C" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="ORDER_DETAIL_NONMEMBER_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012081</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B0F56448-0546-DF8C-38D9-68DF5C9A0339"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="72527DE5-2D70-BA58-3E9C-155EF3275711" name="FK_ORDER_DETAIL_NONMEMBER_NONMEMBER_ORDER_ID_ORDER_NONMEMBER_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="EA7EFE1A-2E86-3627-ABBC-19B32F2D6339"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ECD24680-ABFA-AB78-0F73-7D69FFF4934C" name="FK_ORDER_DETAIL_NONMEMBER_WORK_ID_WORK_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="6FCF76FF-C1C2-ACDA-9D46-CC36F1BF6609"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="31B83146-212D-B295-01B5-06F4AFD0750F" name="FK_ORDER_DETAIL_NONMEMBER_WORK_OPTION_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="44582C48-2AE4-0024-A0DE-B5E3B4DCD4F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

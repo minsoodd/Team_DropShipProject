@@ -1,0 +1,178 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A6FA85F0-81FE-AF47-DA80-BF28D1111AD8" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="NOTICEBOARD">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>NOTICEBOARD</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="468B7AA7-3ACD-3F6A-6768-4B8D65C4169C">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_ISTOP" id="2A4707DB-BE1F-5CDB-554E-B05A788D7F73">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_ISTOP</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>1</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>0</defaultValue>
+<ownDataTypeParameters>,1,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MEMBER_ID" id="5821A7D3-5E16-6B79-54E8-6B5EB7D3B2EB">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>MEMBER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="0E359680-AE5D-1182-72A7-C285ED56953E" referredColumn="C32DC625-BA5C-5DAD-BFC2-DD3F0C56CE1C"/>
+</associations>
+</Column>
+<Column name="NOTICEBOARD_TITLE" id="22478AD7-FFE3-8E7B-C2C0-7EDFF86B4972">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_TITLE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>200 BYTE</dataTypeSize>
+<ownDataTypeParameters>200 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_CONTENT" id="7DE73922-B57A-083B-1DF4-C497C201A35D">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_CONTENT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>4000 BYTE</dataTypeSize>
+<ownDataTypeParameters>4000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_DATE" id="D97CA8C6-F6DD-8C40-F087-51C3EF6B828B">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_UPDATE_DATE" id="A8CF81CB-FF04-B4D0-C915-D196B29288C9">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_UPDATE_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_FILE_NAME" id="6BF566E0-E9C5-4F01-D7E9-0B854FA790D4">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_FILE_NAME</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>400 BYTE</dataTypeSize>
+<ownDataTypeParameters>400 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="NOTICEBOARD_HIT" id="E57B41B9-7126-34E0-671B-BCF4A985C26E">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>NOTICEBOARD</sourceObjSchema>
+<sourceObjName>NOTICEBOARD_HIT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>1</defaultValue>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="067E6C7F-89A0-2C25-81C4-4FC4097F020C" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="NOTICEBOARD_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012113</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="468B7AA7-3ACD-3F6A-6768-4B8D65C4169C"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="ADAD3606-CA53-4CB4-6DAF-5F73F929E1AF" name="FK_NOTICEBOARD_MEMBER_ID_ADMIN_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="5821A7D3-5E16-6B79-54E8-6B5EB7D3B2EB"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

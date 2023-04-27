@@ -1,0 +1,70 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="NON_MEMBER" directorySegmentName="seg_0" id="AFA46992-049D-D0DA-FA20-B89A0C435F8E">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>D9C5A2D3-BB53-B174-6969-D2727B7DC4D4</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="NONMEMBER_PHONE" id="1FDF1E50-3CDA-7985-134E-48208B0ABA7D">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_PW" id="22EC9F02-1AD6-C0B3-5ACE-CDA0F27FDFF5">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_EMAIL" id="47297F27-A514-6DB9-F9CA-03D309B22AEA">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_ROAD" id="4EDFDFAF-D626-A33B-4DC8-53F201CD7BBB">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_ZIP" id="5CB08EE9-C94C-F1DE-2D52-5A536D383941">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_NAME" id="C88F9920-4047-F9F5-439E-AF6D433D3C37">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="ID" id="C98E47CD-C893-CEC2-4BE6-5993F2410B65">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="NONMEMBER_ADDR" id="D2CC9EC0-5CAC-1B75-B695-C8B7AD1E73FF">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="NON_MEMBER_PK" id="DCDF7B2A-081D-3C68-A8F3-B9240EC8D869">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<schemaObject>9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324</schemaObject>
+<segment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</segment>
+<tableSpace>C095EE90-BF60-CF80-792A-EDA9199E48E1</tableSpace>
+<indexSegment>8B8CDDFE-1916-E5A9-9654-0F442EDDC7CD</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

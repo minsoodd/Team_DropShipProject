@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0755DF16-CA3C-F740-BF06-9AC605FC1E00" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="WISHLIST">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>WISHLIST</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="E76F2D9D-C308-1279-DF40-8EAF340CD4F3">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>WISHLIST</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="MEMBER_ID" id="26FADA42-04CE-48FF-E339-AF72759807B2">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>WISHLIST</sourceObjSchema>
+<sourceObjName>MEMBER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="770EC9AE-2C6B-C5EE-4F70-2E3A4D125389" referredColumn="90FF1377-EF57-611E-A419-E58CE3D86C8D"/>
+</associations>
+</Column>
+<Column name="WORK_ID" id="8A83F533-8A3F-5039-1E5B-E90DCAF4208F">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>WISHLIST</sourceObjSchema>
+<sourceObjName>WORK_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="8304CA84-57F4-E463-63FA-5982BEFCD2E2" referredColumn="278255AE-7D0F-D083-CD52-7DE9CEF82E66"/>
+</associations>
+</Column>
+<Column name="ADDED_DATE" id="CA2110BC-0CBD-D7B9-B1A1-3B19D791002A">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>WISHLIST</sourceObjSchema>
+<sourceObjName>ADDED_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="10A8FA4D-DA95-7FDA-680C-09699666F4A0" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="WISHLIST_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012127</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="E76F2D9D-C308-1279-DF40-8EAF340CD4F3"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="603EF826-1622-9552-32EB-0A0656EAD6B8" name="FK_WISHLIST_MEMBER_ID_MEMBER_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="26FADA42-04CE-48FF-E339-AF72759807B2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="25224816-9B15-9645-30FE-EF38F427541F" name="FK_WISHLIST_WORK_ID_WORK_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="8A83F533-8A3F-5039-1E5B-E90DCAF4208F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

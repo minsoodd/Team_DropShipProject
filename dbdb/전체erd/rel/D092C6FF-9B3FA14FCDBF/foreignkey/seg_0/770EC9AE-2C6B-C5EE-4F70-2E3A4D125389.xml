@@ -1,0 +1,19 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="770EC9AE-2C6B-C5EE-4F70-2E3A4D125389" containerWithKeyObject="0755DF16-CA3C-F740-BF06-9AC605FC1E00" localFKIndex="603EF826-1622-9552-32EB-0A0656EAD6B8" name="FK_WISHLIST_MEMBER_ID_MEMBER_ID">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>FK_WISHLIST_MEMBER_ID_MEMBER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<referredTableLongName>DROPUSER2.MEMBER</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>418F8A75-8CDD-F070-6EB1-A1E6C40A8AED</referredTableID>
+<keyObject>B786E8E1-2C85-4945-8FC5-3B439656F0F1</keyObject>
+<referredKeyID>B786E8E1-2C85-4945-8FC5-3B439656F0F1</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>ID</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

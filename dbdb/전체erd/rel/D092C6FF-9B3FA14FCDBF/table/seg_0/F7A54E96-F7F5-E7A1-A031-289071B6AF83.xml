@@ -1,0 +1,147 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="F7A54E96-F7F5-E7A1-A031-289071B6AF83" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="FREEBOARD_COMMENT">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>FREEBOARD_COMMENT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:03 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="ID" id="85D94343-9174-12E3-7427-080F789A13AC">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="FREEBOARD_ID" id="78DA63FA-1031-6B4A-C17B-06A1A87F6627">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>FREEBOARD_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6D3480AF-1410-6648-4AAE-172ACAF9FC1F" referredColumn="02732BC6-58A8-E46F-BC7C-61088F3A4E79"/>
+</associations>
+</Column>
+<Column name="MEMBER_ID" id="F80410FC-1880-F53B-7052-B4FF090D40C5">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>MEMBER_ID</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="1C2AB2DC-2D54-617A-46F3-366E23B666ED" referredColumn="90FF1377-EF57-611E-A419-E58CE3D86C8D"/>
+</associations>
+</Column>
+<Column name="COMMENT_PW" id="BEB45D64-3976-93CB-A2AB-8D39C31D784A">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>COMMENT_PW</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<dataTypeScale>0</dataTypeScale>
+<defaultValue>null</defaultValue>
+<ownDataTypeParameters>,4,0</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMMENT_CONTENT" id="3B1CFF87-CFFF-CDC0-CB07-5A5B874BE090">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>COMMENT_CONTENT</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>1000 BYTE</dataTypeSize>
+<ownDataTypeParameters>1000 BYTE,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="COMMENT_DATE" id="55FD00C7-D4F3-C4D0-B690-037B293D472F">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>FREEBOARD_COMMENT</sourceObjSchema>
+<sourceObjName>COMMENT_DATE</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:04 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<dataTypeSize>7</dataTypeSize>
+<defaultValue>sysdate</defaultValue>
+<ownDataTypeParameters>7,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="64B2F171-7E6C-83DE-BD6A-2C92A4259622" schemaObject="9D8E5657-8E8E-B0CF-3C9F-1791A8CBE324" name="FREEBOARD_COMMENT_PK">
+<sourceConnName>dropuser2접속</sourceConnName>
+<sourceObjSchema>DROPUSER2</sourceObjSchema>
+<sourceObjName>SYS_C0012120</sourceObjName>
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="85D94343-9174-12E3-7427-080F789A13AC"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="7F6B81FE-6AAA-98BC-727D-7308C6EC9D13" name="FK_FREEBOARD_COMMENT_FREEBOARD_ID_FREEBOARD_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="78DA63FA-1031-6B4A-C17B-06A1A87F6627"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FA4998F1-1070-4157-1111-9492E72B40E1" name="FK_FREEBOARD_COMMENT_MEMBER_ID_MEMBER_ID">
+<createdBy>ryu</createdBy>
+<createdTime>2023-03-26 18:17:05 UTC</createdTime>
+<ownerDesignName>전체erd</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="F80410FC-1880-F53B-7052-B4FF090D40C5"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
