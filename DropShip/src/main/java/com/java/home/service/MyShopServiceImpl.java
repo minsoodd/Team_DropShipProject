@@ -245,12 +245,12 @@ public class MyShopServiceImpl implements MyShopService{
 		
 		return map;
 	}
-
+	
 	// 찜리스트에 작품이 있는지 확인 
 	@Override
 	public int selectWorkWishListCheck(String member_id, int work_id) {
-		int list = myshopMapper.selectWorkWishListCheck(member_id, work_id);
-		return list;
+		int count = myshopMapper.selectWorkWishListCheck(member_id, work_id);
+		return count;
 	}
 	
 	// 찜리스트에 저장
@@ -258,6 +258,12 @@ public class MyShopServiceImpl implements MyShopService{
 	public void insertWorkWishList(String member_id, int work_id) {
 		myshopMapper.insertWorkWishList(member_id, work_id);
 		
+	}
+	
+	// 찜리스트에서 작품 삭제
+	@Override
+	public void deleteWorkWishList(String member_id, int work_id) {
+		myshopMapper.deleteWorkWishList(member_id, work_id);
 	}
 	
 	// 찜리스트에 member_id가 저장한 작품이 있는지 확인
@@ -276,11 +282,10 @@ public class MyShopServiceImpl implements MyShopService{
 	}
 	
 	
-	// 찜 리스트 삭제
+	// 마이페이지에서 찜 리스트 삭제
 	@Override
-	public void deleteWorkWishList(int id) {
-		myshopMapper.deleteWorkWishList(id);
-		
+	public void deleteWorkWishListFromMyPage(int id) {
+		myshopMapper.deleteWorkWishListFromMyPage(id);
 	}
 	
 	// 찜 리스트(체크박스) 삭제
@@ -360,6 +365,12 @@ public class MyShopServiceImpl implements MyShopService{
 		
 		return myAiWorkListPageMap;
 	}
+
+	
+
+	
+
+	
 
 	
 

@@ -6,9 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.java.mapper.MyShopMapper;
 import com.java.mapper.ShopMapper;
 import com.java.vo.ArtistVo;
 import com.java.vo.OptionVo;
@@ -22,12 +25,18 @@ public class ShopServiceImpl implements ShopService {
 
 	@Autowired
 	ShopMapper shopMapper;
+	
+	@Autowired
+	MyShopMapper myShopMapper;
 
 	@Autowired
 	WorkVo workVo;
 
 	@Autowired
 	ArtistVo artistVo;
+	
+	@Autowired
+	HttpSession session;
 	
 	@Autowired
 	WorkReViewVo workReviewVo;
@@ -49,6 +58,12 @@ public class ShopServiceImpl implements ShopService {
 		List<WorkVo> allWorkVoList = shopMapper.selectWorkAll(); // -> 일단은 전체 workVo들을 가져왔지만 작품개수가 많아지면 매우 비효율적일 것. workId들만 가져오는게 나을 듯. 시간관계상 그렇게 안함
 		Collections.shuffle(allWorkVoList);	// 전체 작품들을 섞어
 		List<WorkVo> randomWorkVoList = allWorkVoList.subList(0, 5); // 그 중 0~4번째 작품만 가져와
+		
+		
+		// index나 그림작품 페이지에서 하트 보여질 용도로 workVo에 isAddedToWishList가 0인지 1인지 추가
+		randomWorkVoList = setIsAddedToWishList(randomWorkVoList);
+		sortedWorkList = setIsAddedToWishList(sortedWorkList);
+		
 		
 		sortedWorkMap.put("randomWorkVoList", randomWorkVoList);
 		sortedWorkMap.put("sortedWorkList", sortedWorkList);
@@ -97,8 +112,42 @@ public class ShopServiceImpl implements ShopService {
 	        List<WorkVo> randomWorkVoList = shopMapper.selectRandomWorks(best_num, additionalWorksNeeded);
 	        bestWorkList.addAll(randomWorkVoList);
 	    }
+	    
+	    // index나 그림작품 페이지에서 하트 보여질 용도로 workVo에 isAddedToWishList가 0인지 1인지 추가
+	    bestWorkList = setIsAddedToWishList(bestWorkList);
+	    
 	    return bestWorkList;
 	}
+
+	// index나 그림작품 페이지에서 하트 보여질 용도로 workVo에 isAddedToWishList가 0인지 1인지 추가
+	private List<WorkVo> setIsAddedToWishList(List<WorkVo> workList) {
+		int member_id = (int) session.getAttribute("sessionMember_id");
+	    List<Integer> wishListWorkIdList = new ArrayList<>();
+	    List<Integer> workIdListInWorkList =  new ArrayList<>();
+	    for (WorkVo workVo : workList) {
+	    	workIdListInWorkList.add(workVo.getId()); 
+	    	
+	    }
+	    wishListWorkIdList = myShopMapper.selectWorkIdsOnWishList(member_id, workIdListInWorkList);
+	    System.out.println("겹치는 workId :" + wishListWorkIdList);
+	    
+	    // workList안에 있는 workVo 안에 isAddedToWishList를 저장
+	    for (WorkVo workVo : workList) {
+	    	for(int i = 0; i < wishListWorkIdList.size(); i++) {
+	    		if(workVo.getId() == wishListWorkIdList.get(i)) {
+	    			workVo.setIsAddedToWishList(1);
+	    		} else if(workVo.getIsAddedToWishList() !=1 && workVo.getId() != wishListWorkIdList.get(i)) {
+	    			workVo.setIsAddedToWishList(0);
+	    		}
+	    	}
+		}
+	    for (WorkVo workVo : workList) {
+	    	System.out.println(workVo.getIsAddedToWishList());
+	    }
+	    System.out.println("-------------------------------------");
+		return workList;
+	}
+
 
 	// 작품 new 가져오기
 	@Override

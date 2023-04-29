@@ -182,6 +182,17 @@
 	  <!--/////////////////////////////////////////////////////////////////////////////////////////////  -->
 
 	<!--//////////////////↓////////////↓//////// 찜 리스트 관련 //////////////////↓////////////↓//////// -->
+	
+	<!-- 찜리스트에 있는 work_id만 가져오기 -->
+    <select id="selectWorkIdsOnWishList" resultType="Integer">
+ 	   SELECT work_id FROM wishList WHERE member_id = #{member_id} AND work_id in (
+		  	<foreach collection="workIdListInBestWorkList" item="work_id" separator=",">
+                #{work_id}
+            </foreach>
+		)
+    </select>
+	
+	
 	<!-- 찜리스트 page 처리해서 가져오기 -->
 	<select id="selectWishlistpage" resultType="com.java.vo.WishListVo">
 		SELECT * FROM (SELECT ROWNUM rnum, a.* FROM
@@ -232,9 +243,15 @@
 		VALUES (Wishlist_seq.nextval, #{member_id}, #{work_id}, sysdate)
 	</insert>
 	 
-	 
-	<!-- wishlist에서 찜 리스트 1개 삭제 -->
+	<!-- index에서 찜 리스트 삭제 -->
 	<delete id="deleteWorkWishList">
+		DELETE FROM wishlist WHERE member_id = #{member_id} AND work_id = #{work_id}
+	</delete>
+	 
+	 
+	 
+	<!-- 마이페이지 wishlist에서 찜 리스트 1개 삭제 -->
+	<delete id="deleteWorkWishListFromMyPage">
 		delete FROM wishlist where id = #{id}  
 	</delete>
 	

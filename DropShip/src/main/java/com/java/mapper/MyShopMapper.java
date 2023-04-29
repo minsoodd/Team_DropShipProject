@@ -59,6 +59,8 @@ public interface MyShopMapper {
 	
 	
 	///////////----------↓--------↓------ 찜리스트 관련 -------------↓--------↓---------//////////
+	List<Integer> selectWorkIdsOnWishList(int member_id, List<Integer> workIdListInBestWorkList);
+	
 	int selectWishListCount(String tableName, String columnName, int member_id);  // 찜 리스트 page 카운트하는 구문	// 이거 재사용 하려고 인자 두개로 만들어놓음(승택)
 	
 	List<WishListVo> selectWishlistpage(int startRow, int endRow, int member_id); // 찜리스트 page 가져오기
@@ -66,12 +68,16 @@ public interface MyShopMapper {
 	int selectWorkWishListCheck(String member_id, int work_id);  // 찜리스트에 작품이 있는지 확인
 	
 	int insertWorkWishList(String member_id, int work_id); // 찜리스트에 저장
+	void deleteWorkWishList(String member_id, int work_id);	// 찜리스트에서 삭제
+	
+	
+	
 
 	int selectWishlistCount(int member_id);  // 찜리스트에 member_id가 저장한 작품이 있는지 확인 
 
 	List<WishListVo> selectMypageView(int member_id);  // mypage 페이지에 보여주는 작품 찜리스트 가져오기
 	
-	void deleteWorkWishList(int id); // 찜 리스트 삭제
+	void deleteWorkWishListFromMyPage(int id); // 마이페이지에서 찜 리스트 삭제
 
 	void deleteCheckBox(List<Integer> selectedItemsList);  // 찜 리스트(체크박스) 삭제
 
@@ -84,6 +90,12 @@ public interface MyShopMapper {
 	List<Integer> selectOrderDetail_OptionIds(Integer work_id);	// 작품 팔린 개수 알기위해 주문상세 테이블에서 option_id들 리스트로 가져오기
 
 	List<Integer> selectOptionQuantity(List<Integer> orderDetail_workId_OptionIdList);
+
+
+
+	
+
+
 
 	
 

@@ -10,6 +10,7 @@ import com.java.vo.Order_Detail_inquireVo;
 import com.java.vo.Order_MemberVo;
 import com.java.vo.WishListVo;
 import com.java.vo.WorkReViewVo;
+import com.java.vo.WorkVo;
 
 @Service
 public interface MyShopService {
@@ -64,17 +65,20 @@ public interface MyShopService {
 	
 
 	///////////----------↓--------↓------ 찜리스트 관련 -------------↓--------↓---------//////////
+	
 	Map<String, Object> selectWishlistPage(int page, int member_id); // 찜 리스트 page 불러오기
+	
 	
 	int selectWorkWishListCheck(String member_id, int work_id);  // 찜리스트에 작품이 있는지 확인
 	
 	void insertWorkWishList(String member_id, int work_id);  // 찜리스트 저장
+	void deleteWorkWishList(String member_id, int work_id);	 // 찜리스트 삭제
 	
 	int selectWishlistCount(int member_id);	// 찜리스트에 member_id가 저장한 작품이 있는지 확인
 	
 	List<WishListVo> selectMypageView(int member_id);  // mypage 페이지에 보여주는 작품 가져오기
 	
-	void deleteWorkWishList(int id);  // 찜 리스트 삭제
+	void deleteWorkWishListFromMyPage(int id);  // 마이페이지에서 찜 리스트 삭제
 	
 	void deleteCheckBox(List<Integer> selectedItemsList);  // 찜 리스트(체크박스) 삭제
 	
@@ -90,6 +94,9 @@ public interface MyShopService {
 
 	// 장바구니 담긴 개수 가져오는 메소드
 	int getCartCount(int member_id);
+
+
+	
 
 
 	

@@ -37,7 +37,7 @@ public class WorkVo {
     private String artist_name; // selectWorkAll(), selectWorkOne() 함수용. JOIN시 사용. 원래 Work테이블에 artist_name컬럼은 없음.
     private String artist_korean_name; // selectWorkAll(), selectWorkOne() 함수용. JOIN시 사용. 원래 Work테이블에 artist_name컬럼은 없음.
     
-    
+    private int isAddedToWishList; // 0이면 안담겨있음, 1이면 담겨있음 (index나 그림작품 페이지에서 하트 보여질 용도)
    
 	
 }

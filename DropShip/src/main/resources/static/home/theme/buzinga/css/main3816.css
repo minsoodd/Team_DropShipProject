@@ -412,6 +412,9 @@
 .best .btn-like {
     background-image:url(../../../img/ico/ico-like.png);
 }
+.best .btn-like-active {
+    background-image:url(../../../img/ico/ico-like-active.png);
+}
 .best .btn-like:hover {
     background-image:url(../../../img/ico/ico-like-on.png);
 }

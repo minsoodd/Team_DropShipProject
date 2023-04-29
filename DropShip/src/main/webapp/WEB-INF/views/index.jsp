@@ -153,7 +153,7 @@
                     <!-- BEST ART 작품 나열 시작 -->
                     <div class="best-slider">
                         <ul class="swiper-wrapper sct sct_20">
-                        	<c:forEach items="${BestList}" var="workVo">
+                        	<c:forEach items="${bestList}" var="workVo">
 	                            <li class="swiper-slide sct_li">
 	                                <div class="li_wr">
 	                                    <div class="sct_img_wrap">
@@ -174,14 +174,17 @@
 	                                                <a href="shop/painting_item?work_id=${workVo.id}&artist_id=${workVo.artist_id}" class="btnset btn-sight">
 	                                                	<span class="hide">자세히보기</span>
 	                                                </a>
-	                                                	<c:if test="${sessionMember_login_id == null }">
-			                                                <button type="button" onclick="NoheartBtn()" class="btnset btn-like btn_wish" data-it_id="1654133549"><span class="hide">찜하기</span></button>
-	                                                	</c:if>
-	                                                	<c:if test="${sessionMember_login_id != null }">
-			                                                <button type="button" onclick="heartBtn(${sessionMember_id}, ${workVo.id})" class="btnset btn-like btn_wish" data-it_id="1654133549"><span class="hide">찜하기</span></button>
-	                                                	</c:if>
-		                                                
-		                                                
+                                                	<c:if test="${sessionMember_login_id == null }">
+		                                                <button type="button" onclick="NoheartBtn()" class="btnset btn-like btn_wish" data-it_id="1654133549"><span class="hide">찜하기</span></button>
+                                                	</c:if>
+                                                	<c:if test="${sessionMember_login_id != null  && workVo.isAddedToWishList == 1}">
+		                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like-active btn_wish" data-it_id="1654133549" 
+		                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+                                                	</c:if>
+                                                	<c:if test="${sessionMember_login_id != null && workVo.isAddedToWishList == 0}">
+		                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like btn_wish" data-it_id="1654133549" 
+		                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+                                                	</c:if>
 	                                            </div>
 	                                        </div>
 	                                    </div>
@@ -371,89 +374,6 @@
                                 </div>
                             </div>
                           </c:forEach>
-                            <!--
-				<div class="swiper-slide">
-					<div class="review-thumb-wrap">
-						<span class="review-date">
-							<strong>10</strong>Mar
-						</span>
-						<div class="review-thumb" style="background-image:url(/img/main/review-img01.jpg)">
-							<span class="hide">썸네일 이미지</span>
-						</div>
-					</div>
-					<div class="review-info-wrap">
-						<div class="review-info">
-							<dl class="review-desc">
-								<dt>
-									<span>아르장퇴유 화가의 정원</span>
-									<span>클레드 모네</span>
-								</dt>
-								<dd>
-									보고 있으면 너무 행복해지는 그림입니다. 따뜻하고 예쁘고,
-									그림을 처음 구입하는데 프린트 기술이 좋은지 색상이 너무 선명하 ...
-								</dd>
-							</dl>
-							<div class="review-btnwrap">
-								<a href="" class="btnset btn-type02">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="review-thumb-wrap">
-						<span class="review-date">
-							<strong>28</strong>Feb
-						</span>
-						<div class="review-thumb" style="background-image:url(/img/main/review-img02.jpg)">
-							<span class="hide">썸네일 이미지</span>
-						</div>
-					</div>
-					<div class="review-info-wrap">
-						<div class="review-info">
-							<dl class="review-desc">
-								<dt>
-									<span>그랑드 자트 섬의 일요일 오후</span>
-									<span>조르주 피에르 쇠라</span>
-								</dt>
-								<dd>
-									후기 내용이 2줄로 노출되며 그 이상 초과시 말줄임으로 보여집니다.
-									후기 내용이 2줄로 노출되며 그 이상 초과시 말줄임으로 보여집니 ...
-								</dd>
-							</dl>
-							<div class="review-btnwrap">
-								<a href="" class="btnset btn-type02">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="review-thumb-wrap">
-						<span class="review-date">
-							<strong>08</strong>Jan
-						</span>
-						<div class="review-thumb" style="background-image:url(/img/main/review-img03.jpg)">
-							<span class="hide">썸네일 이미지</span>
-						</div>
-					</div>
-					<div class="review-info-wrap">
-						<div class="review-info">
-							<dl class="review-desc">
-								<dt>
-									<span>살렌토 해변 II</span>
-									<span>제임스 빈스</span>
-								</dt>
-								<dd>
-									후기 내용이 2줄로 노출되며 그 이상 초과시 말줄임으로 보여집니다.
-									후기 내용이 2줄로 노출되며 그 이상 초과시 말줄임으로 보여집니 ...
-								</dd>
-							</dl>
-							<div class="review-btnwrap">
-								<a href="" class="btnset btn-type02">Read More</a>
-							</div>
-						</div>
-					</div>
-				</div>
--->
                         </div>
                     </div>
                     <div class="swiper-button-prev cursor-able"></div>
@@ -484,20 +404,19 @@
 	
 	<script>
 		// 찜 리스트 구문
-		
 		// button에서 onclick="heartBtn(${workVo.id}) 들고왔다 function hearBtn()안에 넣을때는 (머가들어가든 괜찮다 ex) aa이런식으로 )
-		function heartBtn(member_id, work_id){  
+		function heartBtn(btn){  
+			var member_id = $(btn).data("member_id");
+		    var work_id = $(btn).data("work_id");
 			$.ajax({
 				url: "myshop/workWishlist_ajax",
 				type: "post",
 				data:{"member_id":member_id, "work_id":work_id},
-				success: function(list){
-					if(list == 0){
-						alert("상품을 찜리스트에 담았습니다.");
+				success: function(check){
+					if(check == "저장"){
+						$(btn).css("background-image", "url(home/img/ico/ico-like-active.png)");
 					} else {
-						alert("이미 있습니다.");
-						
-						
+						$(btn).css("background-image", "url(home/img/ico/ico-like.png)");
 					}
 				},
 				error : function(){

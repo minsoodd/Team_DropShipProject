@@ -2028,6 +2028,9 @@
 .grid-list .btn-sight:hover {
     background-image:url(../../../img/ico/ico-sight-on.png);
 }
+.grid-list .btn-like-active {
+    background-image:url(../../../img/ico/ico-like-active.png);
+}
 .grid-list .btn-like {
     background-image:url(../../../img/ico/ico-like.png);
 }

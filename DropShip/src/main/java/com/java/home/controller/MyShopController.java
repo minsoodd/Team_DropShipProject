@@ -491,19 +491,23 @@ public class MyShopController {
 	
 	@PostMapping("workWishlist_ajax")  // 찜 리스트 ajax
 	@ResponseBody
-	public int workWishlist_ajax(String member_id, int work_id) {
-		int list = myShopService.selectWorkWishListCheck(member_id, work_id); // 찜리스트에 작품이 있는지 확인
-		//System.out.println("list의 값 : "+list);
-		if(list==0) {  // 찜리스트에 저장이 안되어있으면 list=0이됨
+	public String workWishlist_ajax(String member_id, int work_id) {
+		int count = myShopService.selectWorkWishListCheck(member_id, work_id); // 찜리스트에 작품이 있는지 확인
+		String check = "";
+		if(count==0) {  // 찜리스트에 등록이 안된 작품이면 -> 찜리스트에 등록
 			myShopService.insertWorkWishList(member_id, work_id);  // 찜리스트에 저장
+			check = "저장";
+		} else {	// 찜리스트에 등록이 된 작품이면 -> 찜리스트에서 삭제
+			myShopService.deleteWorkWishList(member_id, work_id);
+			check = "삭제";
 		}
-		return list;
+		return check;
 	}
 	
 	@PostMapping("WishlistDelete_ajax")  // 찜 리스트 삭제
 	@ResponseBody
 	public void WishlistDelete_ajax(int id) {
-		myShopService.deleteWorkWishList(id);
+		myShopService.deleteWorkWishListFromMyPage(id);
 		//System.out.println("DB에서 가져온 삭제 id : "+id);
 	}
 	

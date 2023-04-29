@@ -216,9 +216,14 @@
 									                            <c:if test="${sessionMember_login_id == null }">
 									                                <button type="button" onclick="NoheartBtn()" data-it_id="1654135291" class="btnset btn-like btn_wish"><span class="hide">찜하기</span></button>
 									                            </c:if>
-									                            <c:if test="${sessionMember_login_id != null }">
-									                                <button type="button" onclick="heartBtn(${sessionMember_id},${workVo.id})" data-it_id="1654135291" class="btnset btn-like btn_wish"><span class="hide">찜하기</span></button>
-									                            </c:if>
+									                            <c:if test="${sessionMember_login_id != null  && workVo.isAddedToWishList == 1}">
+					                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like-active btn_wish" data-it_id="1654135291" 
+					                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+			                                                	</c:if>
+			                                                	<c:if test="${sessionMember_login_id != null && workVo.isAddedToWishList == 0}">
+					                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like btn_wish" data-it_id="1654135291" 
+					                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+			                                                	</c:if>
 									                        </div>
 									                    </div>
 									                </div>
@@ -384,23 +389,26 @@
 				var work_id;
 				// button에서 onclick="heartBtn(${workVo.id}) 들고왔다 function hearBtn()안에 넣을때는 (머가들어가든 괜찮다 ex) aa이런식으로 )
 				// 회원일 때 찜하기 버튼
-				function heartBtn(member_id, work_id){  
+				function heartBtn(btn){  
+					var member_id = $(btn).data("member_id");
+				    var work_id = $(btn).data("work_id");
 					$.ajax({
 						url: "../myshop/workWishlist_ajax",
 						type: "post",
 						data:{"member_id":member_id, "work_id":work_id},
-						success: function(list){
-							if(list == 0){
-								alert("상품을 찜리스트에 담았습니다.");
+						success: function(check){
+							if(check == "저장"){
+								$(btn).css("background-image", "url(/home/img/ico/ico-like-active.png)");
 							} else {
-								alert("이미 있습니다.");
+								$(btn).css("background-image", "url(/home/img/ico/ico-like.png)");
 							}
 						},
 						error : function(){
 							alert("시스템 오류입니다");
 						}
+						
 					})//ajax
-				}//function
+				}// heartBtn()
 				
 				// 회원이 아닐 때 찜하기 버튼
 				function NoheartBtn(){

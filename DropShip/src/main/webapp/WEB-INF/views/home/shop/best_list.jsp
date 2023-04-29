@@ -150,9 +150,14 @@
                                                             <c:if test="${sessionMember_login_id == null }">
 	                                                            <button type="button" onclick="NoheartBtn()" class="btnset btn-like btn_wish" data-it_id="1652406531"><span class="hide">찜하기</span></button>
                                                             </c:if>
-                                                            <c:if test="${sessionMember_login_id != null }">
-	                                                            <button type="button" onclick="heartBtn('${sessionMember_id}',${workVo.id})" class="btnset btn-like btn_wish" data-it_id="1652406531"><span class="hide">찜하기</span></button>
-                                                            </c:if>
+                                                             <c:if test="${sessionMember_login_id != null  && workVo.isAddedToWishList == 1}">
+				                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like-active btn_wish" data-it_id="1652406531" 
+				                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+		                                                	</c:if>
+		                                                	<c:if test="${sessionMember_login_id != null && workVo.isAddedToWishList == 0}">
+				                                                <button type="button" onclick="heartBtn(this)" class="btnset btn-like btn_wish" data-it_id="1652406531" 
+				                                                data-member_id="${sessionMember_id}" data-work_id="${workVo.id}"><span class="hide">찜하기</span></button>
+		                                                	</c:if>
                                                             
                                                         </div>
                                                     </div>
@@ -224,23 +229,26 @@
 	<script>
 		var member_id;
 		var work_id;
-		function heartBtn(member_id, work_id){
+		function heartBtn(btn){  
+			var member_id = $(btn).data("member_id");
+		    var work_id = $(btn).data("work_id");
 			$.ajax({
-				url : "../myshop/workWishlist_ajax",
-				type : "post",
-				data : {"member_id":member_id, "work_id":work_id},
-				success: function(list){
-					if(list == 0){
-						alert("상품을 찜리스트에 담았습니다.");
-					}else{
-						alert("이미 있습니다");
+				url: "../myshop/workWishlist_ajax",
+				type: "post",
+				data:{"member_id":member_id, "work_id":work_id},
+				success: function(check){
+					if(check == "저장"){
+						$(btn).css("background-image", "url(/home/img/ico/ico-like-active.png)");
+					} else {
+						$(btn).css("background-image", "url(/home/img/ico/ico-like.png)");
 					}
 				},
 				error : function(){
-					alert("시스템 오류입니다.");
+					alert("시스템 오류입니다");
 				}
-			});//ajax
-		}//function
+				
+			})//ajax
+		}// heartBtn()
 		
 		
 		function NoheartBtn(){
