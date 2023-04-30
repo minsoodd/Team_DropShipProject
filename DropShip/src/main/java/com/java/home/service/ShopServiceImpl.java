@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
@@ -121,32 +122,39 @@ public class ShopServiceImpl implements ShopService {
 
 	// index나 그림작품 페이지에서 하트 보여질 용도로 workVo에 isAddedToWishList가 0인지 1인지 추가
 	private List<WorkVo> setIsAddedToWishList(List<WorkVo> workList) {
-		int member_id = (int) session.getAttribute("sessionMember_id");
-	    List<Integer> wishListWorkIdList = new ArrayList<>();
-	    List<Integer> workIdListInWorkList =  new ArrayList<>();
-	    for (WorkVo workVo : workList) {
-	    	workIdListInWorkList.add(workVo.getId()); 
-	    	
-	    }
-	    wishListWorkIdList = myShopMapper.selectWorkIdsOnWishList(member_id, workIdListInWorkList);
-	    System.out.println("겹치는 workId :" + wishListWorkIdList);
-	    
-	    // workList안에 있는 workVo 안에 isAddedToWishList를 저장
-	    for (WorkVo workVo : workList) {
-	    	for(int i = 0; i < wishListWorkIdList.size(); i++) {
-	    		if(workVo.getId() == wishListWorkIdList.get(i)) {
-	    			workVo.setIsAddedToWishList(1);
-	    		} else if(workVo.getIsAddedToWishList() !=1 && workVo.getId() != wishListWorkIdList.get(i)) {
-	    			workVo.setIsAddedToWishList(0);
-	    		}
-	    	}
+		Integer member_id = (Integer) session.getAttribute("sessionMember_id");
+		if (member_id != null) {
+			List<Integer> wishListWorkIdList = new ArrayList<>();
+			List<Integer> workIdListInWorkList =  new ArrayList<>();
+			for (WorkVo workVo : workList) {
+				workIdListInWorkList.add(workVo.getId()); 
+			}
+			wishListWorkIdList = myShopMapper.selectWorkIdsOnWishList(member_id, workIdListInWorkList);
+			
+			// workList안에 있는 workVo 안에 isAddedToWishList를 저장
+			for (WorkVo workVo : workList) {
+				for(int i = 0; i < wishListWorkIdList.size(); i++) {
+					if(workVo.getId() == wishListWorkIdList.get(i)) {
+						workVo.setIsAddedToWishList(1);
+					} else if(workVo.getIsAddedToWishList() !=1 && workVo.getId() != wishListWorkIdList.get(i)) {
+						workVo.setIsAddedToWishList(0);
+					}
+				}
+			}
 		}
-	    for (WorkVo workVo : workList) {
-	    	System.out.println(workVo.getIsAddedToWishList());
-	    }
-	    System.out.println("-------------------------------------");
 		return workList;
 	}
+
+	
+//	private List<WorkVo> setIsAddedToWishList(List<WorkVo> workList) {	// 짧은 코드지만 어려운 버젼
+//		Integer member_id = (Integer) session.getAttribute("sessionMember_id");
+//		if (member_id != null) {
+//			List<Integer> workIdListInWorkList = workList.stream().map(WorkVo::getId).collect(Collectors.toList());
+//			List<Integer> wishListWorkIdList = myShopMapper.selectWorkIdsOnWishList(member_id, workIdListInWorkList);
+//			workList.forEach(work -> work.setIsAddedToWishList(wishListWorkIdList.contains(work.getId()) ? 1 : 0));
+//		}
+//		return workList;
+//	}
 
 
 	// 작품 new 가져오기
